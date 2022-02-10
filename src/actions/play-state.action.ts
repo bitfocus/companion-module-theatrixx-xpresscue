@@ -29,6 +29,22 @@ export class PlayStateAction implements Action {
   }
 
   handle(event: CompanionActionEvent): void {
-    this.player.client.emit(`playback:${event.options.state}`);
+    const player = this.player;
+    switch (event.options.state) {
+      case 'togglePlayPause':
+        player.togglePlayPause();
+        break;
+      case 'play':
+        player.play();
+        break;
+      case 'pause':
+        player.pause();
+        break;
+      case 'stop':
+        player.stop();
+        break;
+      default:
+        break;
+    }
   }
 }
