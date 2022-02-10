@@ -1,5 +1,11 @@
 import { CompanionInputFieldDropdown, DropdownChoice } from '../../../instance_skel_types';
-import { Player, SimpleEntity, TestPatternStore } from '@theatrixx/player-connection';
+import {
+  MediaFileStore,
+  Player,
+  PlaylistStore,
+  SimpleEntity,
+  TestPatternStore
+} from '@theatrixx/player-connection';
 
 export function MediaPicker(player: Player): CompanionInputFieldDropdown {
   return {
@@ -7,7 +13,7 @@ export function MediaPicker(player: Player): CompanionInputFieldDropdown {
     label: 'Choose Media',
     type: 'dropdown',
     default: '',
-    choices: getDropdown(player.store.get('MediaFile')),
+    choices: getDropdown(player.store.get(MediaFileStore)),
     minChoicesForSearch: 0,
   }
 }
@@ -18,7 +24,7 @@ export function PlaylistPicker(player: Player): CompanionInputFieldDropdown {
     label: 'Choose Playlist',
     type: 'dropdown',
     default: '',
-    choices: getDropdown(player.store.get('Playlist')),
+    choices: getDropdown(player.store.get(PlaylistStore)),
     minChoicesForSearch: 0,
   }
 }
