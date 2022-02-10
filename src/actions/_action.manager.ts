@@ -1,6 +1,6 @@
 import { Player, Type } from '@theatrixx/player-connection';
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types';
-import { Action, ACTION_IDKEY } from './action.types';
+import { Action, ACTION_IDKEY } from './_action.types';
 
 import { LoadPlaylistAction } from './load-playlist.action';
 import { PlayStateAction } from './play-state.action';

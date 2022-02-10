@@ -1,5 +1,5 @@
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types';
-import { Action, ActionId } from './action.types';
+import { Action, ActionId } from './_action.types';
 import { Player } from '@theatrixx/player-connection';
 
 @ActionId('take')

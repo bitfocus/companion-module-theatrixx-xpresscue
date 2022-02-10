@@ -1,8 +1,8 @@
 import InstanceSkel = require('../../../instance_skel')
 import { CompanionActionEvent, CompanionConfigField, CompanionSystem } from '../../../instance_skel_types';
-import { ActionManager } from './actions/action.manager';
+import { ActionManager } from './actions/_action.manager';
 import { getConfigInputFields, PlayerConfig } from './config';
-import { FeedbackManager } from './feedbacks/feedback.manager';
+import { FeedbackManager } from './feedbacks/_feedback.manager';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Player } from '@theatrixx/player-connection';

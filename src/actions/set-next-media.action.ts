@@ -1,6 +1,6 @@
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types';
 import { MediaPicker } from '../pickers';
-import { Action, ActionId } from './action.types';
+import { Action, ActionId } from './_action.types';
 import { Player } from '@theatrixx/player-connection';
 import { Observable } from 'rxjs';
 

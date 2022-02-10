@@ -1,7 +1,7 @@
 import { Player, DeviceStateStore } from '@theatrixx/player-connection';
 import { Colors } from '../constants';
 import { CompanionFeedback, CompanionFeedbackEvent } from '../../../../instance_skel_types';
-import { Feedback, FeedbackId } from './feedback.types';
+import { Feedback, FeedbackId } from './_feedback.types';
 import { Observable } from 'rxjs';
 
 @FeedbackId('play_state')
