@@ -30,7 +30,7 @@ export class LoadPlaylistAction implements Action {
   }
 
   selectRefresh(): Observable<void> {
-    return this.player.store.select('Playlist');
+    return this.player.state.select('Playlist');
   }
 
   handle(event: CompanionActionEvent): void {

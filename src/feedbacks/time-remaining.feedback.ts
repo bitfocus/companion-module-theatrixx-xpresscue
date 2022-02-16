@@ -30,13 +30,13 @@ export class TimeRemainingFeedback implements Feedback {
         }
       ],
       callback: (event: CompanionFeedbackEvent) => {
-        const { remaining } = this.player.store.get(DeviceStateStore, 'progress');
+        const { remaining } = this.player.state.get(DeviceStateStore, 'progress');
         return remaining <= (event.options.time as number * 1000) && remaining !== 0;
       }
     };
   }
 
   selectRefresh(): Observable<any> {
-    return this.player.store.select(DeviceStateStore, 'progress');
+    return this.player.state.select(DeviceStateStore, 'progress');
   }
 }

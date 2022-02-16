@@ -20,7 +20,7 @@ export class SetTestPatternAction implements Action {
   }
 
   selectRefresh(): Observable<void> {
-    return this.player.store.select('TestPattern');
+    return this.player.state.select('TestPattern');
   }
 
   async handle(event: CompanionActionEvent): Promise<void> {

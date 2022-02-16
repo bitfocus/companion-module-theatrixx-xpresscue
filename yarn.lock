@@ -14,9 +14,9 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@theatrixx/player-connection@https://github.com/theatrixx/player-connection.git#v0.1.1":
+"@theatrixx/player-connection@https://github.com/theatrixx/player-connection.git#master":
   version "0.1.1"
-  resolved "https://github.com/theatrixx/player-connection.git#ba51a6a8b116e492db4b1fce55c94500928a791e"
+  resolved "https://github.com/theatrixx/player-connection.git#98d15d465576f65fd86bd7a0ec6007cd2b87b975"
   dependencies:
     "@types/lodash" "^4.14.178"
     axios "^0.24.0"
@@ -639,9 +639,9 @@ mimic-response@^1.0.0, mimic-response@^1.0.1:
   integrity sha512-j5EctnkH7amfV/q5Hgmoal1g2QHFJRraOtmx0JpIqkxhBhI/lJSl1nMpQ45hVarwNETOoWEimndZ4QK0RHxuxQ==
 
 minimatch@^3.0.4:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.5.tgz#4da8f1290ee0f0f8e83d60ca69f8f134068604a3"
-  integrity sha512-tUpxzX0VAzJHjLu0xUfFv1gwVp9ba3IOuRAVH2EGuRW8a5emA2FlACLqiT/lDVtS1W+TGNwqz3sWaNyLgDJWuw==
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
+  integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
   dependencies:
     brace-expansion "^1.1.7"
 

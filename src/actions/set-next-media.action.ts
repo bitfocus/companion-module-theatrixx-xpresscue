@@ -20,7 +20,7 @@ export class SetNextMediaAction implements Action {
   }
 
   selectRefresh(): Observable<void> {
-    return this.player.store.select('MediaFile');
+    return this.player.state.select('MediaFile');
   }
 
   handle(event: CompanionActionEvent): void {

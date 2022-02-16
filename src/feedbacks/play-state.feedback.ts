@@ -33,13 +33,13 @@ export class PlayStateFeedback implements Feedback {
         }
       ],
       callback: (event: CompanionFeedbackEvent) => {
-        const playState = this.player.store.get(DeviceStateStore, 'playState');
+        const playState = this.player.state.get(DeviceStateStore, 'playState');
         return event.options.playState === playState;
       }
     };
   }
 
   selectRefresh(): Observable<any> {
-    return this.player.store.select(DeviceStateStore, 'playState');
+    return this.player.state.select(DeviceStateStore, 'playState');
   }
 }

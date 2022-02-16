@@ -13,7 +13,7 @@ export function MediaPicker(player: Player): CompanionInputFieldDropdown {
     label: 'Choose Media',
     type: 'dropdown',
     default: '',
-    choices: getDropdown(player.store.get(MediaFileStore)),
+    choices: getDropdown(player.state.get(MediaFileStore)),
     minChoicesForSearch: 0,
   }
 }
@@ -24,13 +24,13 @@ export function PlaylistPicker(player: Player): CompanionInputFieldDropdown {
     label: 'Choose Playlist',
     type: 'dropdown',
     default: '',
-    choices: getDropdown(player.store.get(PlaylistStore)),
+    choices: getDropdown(player.state.get(PlaylistStore)),
     minChoicesForSearch: 0,
   }
 }
 
 export function TestPatternPicker(player: Player): CompanionInputFieldDropdown {
-  const patterns = player.store.get(TestPatternStore);
+  const patterns = player.state.get(TestPatternStore);
   const choices = patterns.map(m => ({ id: m._id, label: m._id }));
   return {
     id: 'patternId',
