@@ -2,7 +2,7 @@ import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel
 import { Action, ActionId } from './_action.types';
 import { Player } from '@theatrixx/player-connection';
 
-@ActionId('play_pause')
+@ActionId('play_state')
 export class PlayStateAction implements Action {
 
   constructor(

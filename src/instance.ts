@@ -6,6 +6,7 @@ import { FeedbackManager } from './feedbacks/_feedback.manager';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Player } from '@theatrixx/player-connection';
+import { PresetManager } from './presets/_preset.manager';
 
 export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 
@@ -14,6 +15,7 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 
   private actions = new ActionManager(this.player);
   private feedbacks = new FeedbackManager(this.player);
+  private presets = new PresetManager(this.player);
 
   constructor(system: CompanionSystem, id: string, config: PlayerConfig) {
     super(system, id, config);
@@ -25,6 +27,7 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
     this.player.connect(this.config.host, this.config.port);
     this.refreshActions();
     this.defineFeedbacks();
+    this.definePresets();
   }
 
   destroy(): void {
@@ -58,6 +61,11 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
     this.feedbacks.refresh$
       .pipe(takeUntil(this.destroy$))
       .subscribe(id => this.checkFeedbacks(id));
+
+    this.presets.refresh$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => this.definePresets())
+
   }
 
   private refreshActions(): void {
@@ -68,6 +76,11 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
   private defineFeedbacks(): void {
     const feedbacks = this.feedbacks.get();
     this.setFeedbackDefinitions(feedbacks);
+  }
+
+  private definePresets(): void {
+    const presets = this.presets.getFlat();
+    this.setPresetDefinitions(presets);
   }
 
 }

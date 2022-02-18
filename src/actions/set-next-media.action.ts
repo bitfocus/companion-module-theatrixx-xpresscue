@@ -1,6 +1,6 @@
-import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types';
+import { CompanionAction, CompanionActionEvent, CompanionPreset } from '../../../../instance_skel_types';
 import { MediaPicker } from '../pickers';
-import { Action, ActionId } from './_action.types';
+import { Action, ActionId, getActionId } from './_action.types';
 import { Player } from '@theatrixx/player-connection';
 import { Observable } from 'rxjs';
 
@@ -25,5 +25,14 @@ export class SetNextMediaAction implements Action {
 
   handle(event: CompanionActionEvent): void {
     this.player.setNextMedia(event.options.mediaId as string);
+  }
+
+  static build(mediaId: string) {
+    return {
+      action: getActionId(this),
+      options: {
+        mediaId
+      }
+    }
   }
 }
