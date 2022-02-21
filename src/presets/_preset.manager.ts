@@ -1,4 +1,4 @@
-import { Player, Type } from '@theatrixx/player-connection';
+import { Player, Type } from '@theatrixx/xpresscue-connect';
 import { CompanionPreset } from '../../../../instance_skel_types';
 import { Manager } from '../utils/manager.class';
 import { SetNextMediaPreset } from './set-next-media.preset';

@@ -1,7 +1,7 @@
 import { CompanionAction, CompanionActionEvent, CompanionPreset } from '../../../../instance_skel_types';
 import { MediaPicker } from '../pickers';
 import { Action, ActionId, getActionId } from './_action.types';
-import { Player } from '@theatrixx/player-connection';
+import { Player } from '@theatrixx/xpresscue-connect';
 import { Observable } from 'rxjs';
 
 @ActionId('set_next_media')

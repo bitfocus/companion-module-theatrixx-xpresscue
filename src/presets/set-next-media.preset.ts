@@ -1,4 +1,4 @@
-import { MediaFile, MediaFileStore, Player } from '@theatrixx/player-connection';
+import { MediaFile, MediaFileStore, Player } from '@theatrixx/xpresscue-connect';
 import { Observable } from 'rxjs';
 import { CompanionBankPreset } from '../../../../instance_skel_types';
 import { SetNextMediaAction } from '../actions/set-next-media.action';

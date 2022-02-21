@@ -1,4 +1,4 @@
-import { Type } from '@theatrixx/player-connection';
+import { Type } from '@theatrixx/xpresscue-connect';
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types';
 import { createClassKeyDecorator } from '../utils/decorators';
 import { ManagedInstance } from '../utils/manager.class';

@@ -1,6 +1,6 @@
 import { Observable, Subject, merge } from 'rxjs';
 import { map} from 'rxjs/operators';
-import { Player, Type } from '@theatrixx/player-connection';
+import { Player, Type } from '@theatrixx/xpresscue-connect';
 
 
 export class Manager<C, T extends ManagedInstance<C>> {

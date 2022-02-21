@@ -5,7 +5,7 @@ import {
   PlaylistStore,
   SimpleEntity,
   TestPatternStore
-} from '@theatrixx/player-connection';
+} from '@theatrixx/xpresscue-connect';
 
 export function MediaPicker(player: Player): CompanionInputFieldDropdown {
   return {

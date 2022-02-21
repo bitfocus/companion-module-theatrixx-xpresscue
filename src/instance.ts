@@ -5,7 +5,7 @@ import { getConfigInputFields, PlayerConfig } from './config';
 import { FeedbackManager } from './feedbacks/_feedback.manager';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Player } from '@theatrixx/player-connection';
+import { Player } from '@theatrixx/xpresscue-connect';
 import { PresetManager } from './presets/_preset.manager';
 
 export class PlayerInstance extends InstanceSkel<PlayerConfig> {

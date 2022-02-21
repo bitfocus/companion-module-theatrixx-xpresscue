@@ -13,7 +13,7 @@ export function getConfigInputFields(instance: InstanceSkel<PlayerConfig>): Some
 			id: 'info',
 			width: 12,
 			label: 'Information',
-			value: 'This module is for the Theatrixx MediaPlayer, please read the help'
+			value: 'This module is for interface with the Theatrixx xPressCue, please consult the help documentation for more information.'
 		},
     {
       id: 'host',

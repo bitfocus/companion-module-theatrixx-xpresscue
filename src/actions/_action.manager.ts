@@ -1,4 +1,4 @@
-import { Player, Type } from '@theatrixx/player-connection';
+import { Player, Type } from '@theatrixx/xpresscue-connect';
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types';
 import { Action, ACTION_IDKEY } from './_action.types';
 

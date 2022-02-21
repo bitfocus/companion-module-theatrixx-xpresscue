@@ -1,7 +1,7 @@
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types';
 import { PlaylistPicker } from '../pickers';
 import { Action, ActionId } from './_action.types';
-import { Player } from '@theatrixx/player-connection';
+import { Player } from '@theatrixx/xpresscue-connect';
 import { Observable } from 'rxjs';
 
 @ActionId('load_playlist')

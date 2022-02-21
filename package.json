@@ -1,14 +1,18 @@
 {
-  "name": "theatrixx-mediaplayer",
+  "name": "theatrixx-xpresscue",
   "version": "1.0.0",
   "api_version": "1.0.0",
   "keywords": [
-    "Player"
+    "Player",
+    "Playback",
+    "MediaPlayer",
+    "Media Player",
+    "xPressCue"
   ],
   "manufacturer": "Theatrixx",
-  "product": "MediaPlayer",
-  "shortname": "MediaPlayer",
-  "description": "Theatrixx MediaPlayer module for Bitfocus Companion",
+  "product": "xPressCue",
+  "shortname": "xPressCue",
+  "description": "Theatrixx xPressCue module for Bitfocus Companion",
   "main": "dist/index.js",
   "files": [
     "dist/**/*"
@@ -23,7 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "rxjs": "6",
-    "@theatrixx/player-connection": "https://github.com/theatrixx/player-connection.git#master"
+    "@theatrixx/xpresscue-connect": "https://github.com/theatrixx/xpresscue-connect.git#master"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",

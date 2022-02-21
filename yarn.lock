@@ -14,9 +14,9 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@theatrixx/player-connection@https://github.com/theatrixx/player-connection.git#master":
-  version "0.1.1"
-  resolved "https://github.com/theatrixx/player-connection.git#98d15d465576f65fd86bd7a0ec6007cd2b87b975"
+"@theatrixx/xpresscue-connect@https://github.com/theatrixx/xpresscue-connect.git#master":
+  version "0.1.2"
+  resolved "https://github.com/theatrixx/xpresscue-connect.git#62dccdd5fc778ffdab41b7a70b14d053c0f9bac5"
   dependencies:
     "@types/lodash" "^4.14.178"
     axios "^0.24.0"
