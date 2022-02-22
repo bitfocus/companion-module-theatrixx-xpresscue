@@ -1,3 +1,3 @@
-import { PlayerInstance } from './instance';
+import { PlayerInstance } from './instance'
 
-export = PlayerInstance;
+export = PlayerInstance

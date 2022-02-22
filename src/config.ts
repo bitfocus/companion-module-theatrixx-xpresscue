@@ -1,37 +1,38 @@
 import InstanceSkel = require('../../../instance_skel')
-import { SomeCompanionConfigField } from '../../../instance_skel_types';
+import { SomeCompanionConfigField } from '../../../instance_skel_types'
 
 export interface PlayerConfig {
-  host: string;
-  port: number;
+	host: string
+	port: number
 }
 
 export function getConfigInputFields(instance: InstanceSkel<PlayerConfig>): SomeCompanionConfigField[] {
-  return [
-    {
+	return [
+		{
 			type: 'text',
 			id: 'info',
 			width: 12,
 			label: 'Information',
-			value: 'This module is for interface with the Theatrixx xPressCue, please consult the help documentation for more information.'
+			value:
+				'This module is for interface with the Theatrixx xPressCue, please consult the help documentation for more information.',
 		},
-    {
-      id: 'host',
-      type: 'textinput',
-      label: 'Host IP Address',
-      regex: instance.REGEX_IP,
-      width: 6,
-      required: true
-    },
-    {
-      id: 'port',
-      type: 'number',
-      label: 'Host port',
-      width: 6,
-      required: true,
-      min: 1,
-      max: 65535,
-      default: 80
-    }
-  ];
+		{
+			id: 'host',
+			type: 'textinput',
+			label: 'Host IP Address',
+			regex: instance.REGEX_IP,
+			width: 6,
+			required: true,
+		},
+		{
+			id: 'port',
+			type: 'number',
+			label: 'Host port',
+			width: 6,
+			required: true,
+			min: 1,
+			max: 65535,
+			default: 80,
+		},
+	]
 }
