@@ -14,9 +14,10 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@theatrixx/xpresscue-connect@https://github.com/theatrixx/xpresscue-connect.git#master":
+"@theatrixx/xpresscue-connect@0.1.2":
   version "0.1.2"
-  resolved "https://github.com/theatrixx/xpresscue-connect.git#62dccdd5fc778ffdab41b7a70b14d053c0f9bac5"
+  resolved "https://registry.yarnpkg.com/@theatrixx/xpresscue-connect/-/xpresscue-connect-0.1.2.tgz#0477e0cf5c00790e49d76ad7b0e41da9ee4e5cc2"
+  integrity sha512-pThGV1k4o2poP9g/5eIwDDI0i6lTVhzDsOrQc9yDsxiDuTsOT/BIOuq5cw7U8T0Ch2Ik1P7iVDreMK1Ti+KTIA==
   dependencies:
     "@types/lodash" "^4.14.178"
     axios "^0.24.0"
