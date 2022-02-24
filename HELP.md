@@ -14,6 +14,7 @@ This module interfaces with and allows you to control the Theatrixx xPressCue me
   - **Take**: Executes a TAKE command (with or without automatic playback)
   - **Load Playlist**: Appends or replace a playlist to the Live Queue
   - **Set Test Pattern**: Set the current test pattern (test pattern mode must be activated separately)
+  - **Identify**: Activate the "Identify" mode on the device. This will make all LEDs on the front panel of the device to blink white for a few seconds.
 
 ### Feedbacks
 

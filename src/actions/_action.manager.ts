@@ -8,6 +8,7 @@ import { SetNextMediaAction } from './set-next-media.action'
 import { TakeAction } from './take.action'
 import { SetTestPatternAction } from './test-pattern.action'
 import { Manager } from '../utils/manager.class'
+import { IdentifyAction } from './identify.action'
 
 const ALL_ACTIONS: Type<Action>[] = [
 	PlayStateAction,
@@ -15,6 +16,7 @@ const ALL_ACTIONS: Type<Action>[] = [
 	SetNextMediaAction,
 	LoadPlaylistAction,
 	SetTestPatternAction,
+	IdentifyAction
 ]
 
 export class ActionManager extends Manager<CompanionAction, Action> {
