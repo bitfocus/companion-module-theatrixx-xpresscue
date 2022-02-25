@@ -3,7 +3,7 @@ import { CompanionFeedback, CompanionFeedbackEvent } from '../../../../instance_
 import { Feedback, FeedbackId } from './_feedback.types'
 import { Player, DeviceStateStore } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
-import { TimePicker } from 'src/pickers'
+import { TimePicker } from '../pickers'
 
 @FeedbackId('time_remaining')
 export class TimeRemainingFeedback implements Feedback {
