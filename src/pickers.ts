@@ -47,6 +47,48 @@ export function TimePicker(id = 'time', label = 'Time (seconds'): CompanionInput
 	}
 }
 
+export function VideoOutputModePicker(): CompanionInputFieldDropdown {
+	return {
+		id: 'videoOutputMode',
+		label: 'Choose Video Output Mode',
+		type: 'dropdown',
+		default: 'normal',
+		choices: [
+			{ id: 'normal', label: 'Normal' },
+			{ id: 'test', label: 'Test Pattern' },
+			{ id: 'identity', label: 'Identity' },
+			{ id: 'blackout', label: 'Blackout' },
+		],
+	}
+}
+
+export function PlayModePicker(): CompanionInputFieldDropdown {
+	return {
+		id: 'playMode',
+		label: 'Choose Play Mode',
+		type: 'dropdown',
+		default: 'playlist',
+		choices: [
+			{ id: 'playlist', label: 'Playlist' },
+			{ id: 'abpreset', label: 'A/B Preset' },
+			{ id: 'direct', label: 'Direct' },
+		],
+	}
+}
+
+export function MultiDeviceModePicker(): CompanionInputFieldDropdown {
+	return {
+		id: 'multiDeviceMode',
+		label: 'Choose Multi-Device Mode',
+		type: 'dropdown',
+		default: 'master',
+		choices: [
+			{ id: 'master', label: 'Master' },
+			{ id: 'follower', label: 'Follower' },
+		],
+	}
+}
+
 function getDropdown<T extends SimpleEntity>(entities: T[]): DropdownChoice[] {
 	return entities.map((m) => ({ id: m._id, label: m.name }))
 }

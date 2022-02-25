@@ -4,8 +4,17 @@ import { CompanionFeedback } from '../../../../instance_skel_types'
 import { PlayStateFeedback } from './play-state.feedback'
 import { TimeRemainingFeedback } from './time-remaining.feedback'
 import { Manager } from '../utils/manager.class'
+import { OutputModeFeedback } from './output-mode.feedback'
+import { PlayModeFeedback } from './play-mode.feedback'
+import { MultiDeviceModeFeedback } from './multidevice-mode.feedback'
 
-const ALL_FEEDBACKS: Type<Feedback>[] = [PlayStateFeedback, TimeRemainingFeedback]
+const ALL_FEEDBACKS: Type<Feedback>[] = [
+	PlayStateFeedback,
+	TimeRemainingFeedback,
+	OutputModeFeedback,
+	PlayModeFeedback,
+	MultiDeviceModeFeedback,
+]
 
 export class FeedbackManager extends Manager<CompanionFeedback, Feedback> {
 	constructor(protected readonly player: Player) {

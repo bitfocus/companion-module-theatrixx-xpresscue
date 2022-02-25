@@ -10,6 +10,9 @@ import { SetTestPatternAction } from './test-pattern.action'
 import { Manager } from '../utils/manager.class'
 import { IdentifyAction } from './identify.action'
 import { NextFrameAction } from './next-frame.action'
+import { SetOutputModeAction } from './set-output-mode.action'
+import { SetPlayModeAction } from './set-play-mode.action'
+import { SetMultiDeviceModeAction } from './set-multidevice-mode.action'
 
 const ALL_ACTIONS: Type<Action>[] = [
 	PlayStateAction,
@@ -19,6 +22,9 @@ const ALL_ACTIONS: Type<Action>[] = [
 	SetTestPatternAction,
 	IdentifyAction,
 	NextFrameAction,
+	SetOutputModeAction,
+	SetPlayModeAction,
+	SetMultiDeviceModeAction,
 ]
 
 export class ActionManager extends Manager<CompanionAction, Action> {
