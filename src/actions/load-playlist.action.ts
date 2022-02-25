@@ -14,13 +14,13 @@ export class LoadPlaylistAction implements Action {
 			options: [
 				PlaylistPicker(this.player),
 				{
-					id: 'func',
+					id: 'mode',
 					label: 'Function',
 					type: 'dropdown',
 					default: 'replace',
 					choices: [
-						{ id: 'append', label: 'Append' },
-						{ id: 'replace', label: 'Replace' },
+						{ id: LoadPlaylistMode.Append, label: 'Append' },
+						{ id: LoadPlaylistMode.Replace, label: 'Replace' },
 					],
 				},
 			],
@@ -33,6 +33,11 @@ export class LoadPlaylistAction implements Action {
 
 	handle(event: CompanionActionEvent): void {
 		const opts = event.options
-		this.player.loadPlaylist(opts.playlistId as string, opts.func as any)
+		this.player.loadPlaylist(opts.playlistId as string, opts.mode as LoadPlaylistMode)
 	}
+}
+
+enum LoadPlaylistMode {
+	Append = 'append',
+	Replace = 'replace',
 }

@@ -24,9 +24,9 @@ export class PlayStateFeedback implements Feedback {
 					type: 'dropdown',
 					default: 'playing',
 					choices: [
-						{ id: 'playing', label: 'Playing' },
-						{ id: 'paused', label: 'Paused' },
-						{ id: 'stopped', label: 'Stopped' },
+						{ id: PlayState.Playing, label: 'Playing' },
+						{ id: PlayState.Paused, label: 'Paused' },
+						{ id: PlayState.Stopped, label: 'Stopped' },
 					],
 				},
 			],
@@ -40,4 +40,10 @@ export class PlayStateFeedback implements Feedback {
 	selectRefresh(): Observable<any> {
 		return this.player.state.select(DeviceStateStore, 'playState')
 	}
+}
+
+enum PlayState {
+	Playing = 'playing',
+	Paused = 'paused',
+	Stopped = 'stopped',
 }

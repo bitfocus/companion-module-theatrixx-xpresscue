@@ -1,4 +1,4 @@
-import { CompanionInputFieldDropdown, DropdownChoice } from '../../../instance_skel_types'
+import { CompanionInputFieldDropdown, CompanionInputFieldNumber, DropdownChoice } from '../../../instance_skel_types'
 import { MediaFileStore, Player, PlaylistStore, SimpleEntity, TestPatternStore } from '@theatrixx/xpresscue-connect'
 
 export function MediaPicker(player: Player): CompanionInputFieldDropdown {
@@ -33,6 +33,17 @@ export function TestPatternPicker(player: Player): CompanionInputFieldDropdown {
 		default: '',
 		choices,
 		minChoicesForSearch: 0,
+	}
+}
+
+export function TimePicker(id = 'time', label = 'Time (seconds'): CompanionInputFieldNumber {
+	return {
+		id,
+		label,
+		type: 'number',
+		min: 0,
+		max: 99999999,
+		default: 10,
 	}
 }
 

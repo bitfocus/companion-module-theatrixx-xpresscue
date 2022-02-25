@@ -16,10 +16,10 @@ export class PlayStateAction implements Action {
 					type: 'dropdown',
 					default: 'togglePlayPause',
 					choices: [
-						{ id: 'togglePlayPause', label: 'Toggle Play/Pause' },
-						{ id: 'play', label: 'Play' },
-						{ id: 'pause', label: 'Pause' },
-						{ id: 'stop', label: 'Stop' },
+						{ id: PlayStateCommand.TogglePlayPause, label: 'Toggle Play/Pause' },
+						{ id: PlayStateCommand.Play, label: 'Play' },
+						{ id: PlayStateCommand.Pause, label: 'Pause' },
+						{ id: PlayStateCommand.Stop, label: 'Stop' },
 					],
 				},
 			],
@@ -28,21 +28,28 @@ export class PlayStateAction implements Action {
 
 	handle(event: CompanionActionEvent): void {
 		const player = this.player
-		switch (event.options.state) {
-			case 'togglePlayPause':
+		switch (event.options.state as PlayStateCommand) {
+			case PlayStateCommand.TogglePlayPause:
 				player.togglePlayPause()
 				break
-			case 'play':
+			case PlayStateCommand.Play:
 				player.play()
 				break
-			case 'pause':
+			case PlayStateCommand.Pause:
 				player.pause()
 				break
-			case 'stop':
+			case PlayStateCommand.Stop:
 				player.stop()
 				break
 			default:
 				break
 		}
 	}
+}
+
+enum PlayStateCommand {
+	TogglePlayPause = 'togglePlayPause',
+	Play = 'play',
+	Pause = 'pause',
+	Stop = 'stop',
 }
