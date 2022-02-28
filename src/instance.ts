@@ -63,6 +63,7 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 	private defineFeedbacks(): void {
 		const feedbacks = this.feedbacks.get()
 		this.setFeedbackDefinitions(feedbacks)
+		this.checkFeedbacks()
 	}
 
 	private definePresets(): void {
