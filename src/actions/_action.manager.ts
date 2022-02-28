@@ -13,6 +13,7 @@ import { NextFrameAction } from './next-frame.action'
 import { SetOutputModeAction } from './set-output-mode.action'
 import { SetPlayModeAction } from './set-play-mode.action'
 import { SetMultiDeviceModeAction } from './set-multidevice-mode.action'
+import { JumpPlaybackAction } from './jump-playback.action'
 
 const ALL_ACTIONS: Type<Action>[] = [
 	PlayStateAction,
@@ -25,6 +26,7 @@ const ALL_ACTIONS: Type<Action>[] = [
 	SetOutputModeAction,
 	SetPlayModeAction,
 	SetMultiDeviceModeAction,
+	JumpPlaybackAction,
 ]
 
 export class ActionManager extends Manager<CompanionAction, Action> {

@@ -12,6 +12,7 @@ This module interfaces with and allows you to control the Theatrixx xPressCue me
 - **Set Play State**: Changes or toggles the current play state (play/pause/stop)
 - **Set Next Media**: Selects which files should be the Next Media
 - **Take**: Executes a TAKE command (with or without automatic playback)
+- **Jump Playback**: Jumps forward or behind in playback
 - **Next Frame**: Jumps one frame ahead (and pauses playback)
 - **Load Playlist**: Appends or replace a playlist to the Live Queue
 - **Set Play Mode**: Sets the Playback Mode (Playlist, AB Preset or Direct)

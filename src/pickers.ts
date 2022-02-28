@@ -36,7 +36,7 @@ export function TestPatternPicker(player: Player): CompanionInputFieldDropdown {
 	}
 }
 
-export function TimePicker(id = 'time', label = 'Time (seconds'): CompanionInputFieldNumber {
+export function TimePicker(id = 'time', label = 'Time (seconds)'): CompanionInputFieldNumber {
 	return {
 		id,
 		label,
