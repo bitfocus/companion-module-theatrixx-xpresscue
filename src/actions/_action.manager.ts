@@ -14,6 +14,8 @@ import { SetOutputModeAction } from './set-output-mode.action'
 import { SetPlayModeAction } from './set-play-mode.action'
 import { SetMultiDeviceModeAction } from './set-multidevice-mode.action'
 import { JumpPlaybackAction } from './jump-playback.action'
+import { SetVolumeAction } from './set-volume.action'
+import { SetIntensityAction } from './set-intensity.action'
 
 const ALL_ACTIONS: Type<Action>[] = [
 	PlayStateAction,
@@ -27,6 +29,8 @@ const ALL_ACTIONS: Type<Action>[] = [
 	SetPlayModeAction,
 	SetMultiDeviceModeAction,
 	JumpPlaybackAction,
+	SetVolumeAction,
+	SetIntensityAction,
 ]
 
 export class ActionManager extends Manager<CompanionAction, Action> {
@@ -36,8 +40,8 @@ export class ActionManager extends Manager<CompanionAction, Action> {
 	}
 
 	handle(event: CompanionActionEvent): void {
-		if (this.instances.has(event.action)) {
-			const instance = this.instances.get(event.action) as Action
+		const instance = this.instances.get(event.action)
+		if (instance) {
 			instance.handle(event)
 		}
 	}

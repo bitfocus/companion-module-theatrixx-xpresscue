@@ -47,6 +47,18 @@ export function TimePicker(id = 'time', label = 'Time (seconds)'): CompanionInpu
 	}
 }
 
+export function PercentPicker(id = 'value', label = 'Value (%)'): CompanionInputFieldNumber {
+	return {
+		id,
+		label,
+		type: 'number',
+		min: 0,
+		max: 100,
+		default: 50,
+		range: true,
+	}
+}
+
 export function VideoOutputModePicker(): CompanionInputFieldDropdown {
 	return {
 		id: 'videoOutputMode',

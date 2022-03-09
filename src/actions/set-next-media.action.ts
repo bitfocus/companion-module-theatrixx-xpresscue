@@ -1,4 +1,4 @@
-import { CompanionAction, CompanionActionEvent, CompanionPreset } from '../../../../instance_skel_types'
+import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
 import { MediaPicker } from '../pickers'
 import { Action, ActionId, getActionId } from './_action.types'
 import { Player } from '@theatrixx/xpresscue-connect'
