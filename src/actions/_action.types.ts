@@ -1,5 +1,5 @@
 import { Type } from '@theatrixx/xpresscue-connect'
-import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
+import { CompanionAction, CompanionActionEvent, CompanionPreset } from '../../../../instance_skel_types'
 import { createClassKeyDecorator } from '../utils/decorators'
 import { ManagedInstance } from '../utils/manager.class'
 
@@ -14,3 +14,5 @@ export function getActionId(type: Type<Action>): string {
 export interface Action extends ManagedInstance<CompanionAction> {
 	handle(event: CompanionActionEvent): void
 }
+
+export type BuiltAction = CompanionPreset['actions'][0]

@@ -21,7 +21,7 @@ export class SetNextMediaPreset implements Preset {
 	private static createFromMedia(item: MediaFile): PresetWithoutCategory {
 		return {
 			label: item._id,
-			bank: SetNextMediaPreset.createBank(item),
+			bank: this.createBank(item),
 			actions: [SetNextMediaAction.build(item._id)],
 			feedbacks: [],
 		}

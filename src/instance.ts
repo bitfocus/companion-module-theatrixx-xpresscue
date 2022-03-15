@@ -1,4 +1,5 @@
 import InstanceSkel = require('../../../instance_skel')
+
 import { CompanionActionEvent, CompanionConfigField, CompanionSystem } from '../../../instance_skel_types'
 import { ActionManager } from './actions/_action.manager'
 import { getConfigInputFields, PlayerConfig } from './config'
@@ -23,7 +24,7 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 
 	async init(): Promise<void> {
 		this.status(this.STATUS_ERROR)
-		this.player.connect(this.config.host, this.config.port)
+		await this.player.connect(this.config.host, this.config.port)
 		this.refreshActions()
 		this.defineFeedbacks()
 		this.definePresets()

@@ -14,7 +14,7 @@ export function getConfigInputFields(instance: InstanceSkel<PlayerConfig>): Some
 			width: 12,
 			label: 'Information',
 			value:
-				'This module is for interface with the Theatrixx xPressCue, please consult the help documentation for more information.',
+				'This is the official Theatrixx xPressCue Companion module, please consult the help documentation for more information.',
 		},
 		{
 			id: 'host',
