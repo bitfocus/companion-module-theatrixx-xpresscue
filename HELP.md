@@ -1,5 +1,6 @@
 ### Theatrixx xPressCue
 
+This is the official Theatrixx xPressCue Companion module.
 This module interfaces with and allows you to control the Theatrixx xPressCue media player.
 
 ### Configuration

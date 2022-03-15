@@ -1,5 +1,6 @@
 # companion-module-theatrixx-xpresscue
 
+This is the official Theatrixx xPressCue Companion module.
 Interfaces with the Theatrixx xPressCue media player.
 
 See [HELP.md](./HELP.md) and [LICENSE](./LICENSE)

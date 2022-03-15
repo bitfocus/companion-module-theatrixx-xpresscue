@@ -7,12 +7,13 @@
     "Playback",
     "MediaPlayer",
     "Media Player",
-    "xPressCue"
+    "xPressCue",
+    "Theatrixx"
   ],
   "manufacturer": "Theatrixx",
   "product": "xPressCue",
   "shortname": "xPressCue",
-  "description": "Theatrixx xPressCue module for Bitfocus Companion",
+  "description": "Official Theatrixx xPressCue module for Bitfocus Companion",
   "main": "dist/index.js",
   "files": [
     "dist/**/*"
