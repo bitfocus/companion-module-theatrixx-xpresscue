@@ -15,4 +15,4 @@ export interface Action extends ManagedInstance<CompanionAction> {
 	handle(event: CompanionActionEvent): void
 }
 
-export type BuiltAction = CompanionPreset['actions'][0]
+export type ActionPreset = CompanionPreset['actions'][0]

@@ -1,6 +1,6 @@
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
 import { MediaPicker } from '../pickers'
-import { Action, ActionId, BuiltAction, getActionId } from './_action.types'
+import { Action, ActionId, ActionPreset, getActionId } from './_action.types'
 import { Player } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
 
@@ -23,7 +23,7 @@ export class SetNextMediaAction implements Action {
 		this.player.setNextMedia(event.options.mediaId as string)
 	}
 
-	static build(mediaId: string): BuiltAction {
+	static build(mediaId: string): ActionPreset {
 		return {
 			action: getActionId(this),
 			options: {

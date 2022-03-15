@@ -13,4 +13,4 @@ export function getFeedbackId(type: Type<Feedback>): string {
 
 export interface Feedback extends ManagedInstance<CompanionFeedback> {}
 
-export type BuiltFeedback = CompanionPreset['feedbacks'][0]
+export type FeedbackPreset = CompanionPreset['feedbacks'][0]
