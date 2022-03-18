@@ -16,6 +16,8 @@ This module interfaces with and allows you to control the Theatrixx xPressCue me
 - **Jump Playback**: Jumps forward or behind in playback
 - **Next Frame**: Jumps one frame ahead (and pauses playback)
 - **Load Playlist**: Appends or replace a playlist to the Live Queue
+- **Skip Queue**: Skips to previous or next item on the Live Queue
+- **Clear Queue**: Clears the Live Queue
 - **Set Play Mode**: Sets the Playback Mode (Playlist, AB Preset or Direct)
 - **Set Output Mode**: Sets the Video Output Mode (Normal, Test Pattern, Identify or Blackout)
 - **Set Master Intensity**: Sets the Master Video Intensity to a specified value

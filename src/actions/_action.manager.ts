@@ -16,6 +16,8 @@ import { SetMultiDeviceModeAction } from './set-multidevice-mode.action'
 import { JumpPlaybackAction } from './jump-playback.action'
 import { SetVolumeAction } from './set-volume.action'
 import { SetIntensityAction } from './set-intensity.action'
+import { QueueSkipAction } from './queue-skip.action'
+import { QueueClearAction } from './queue-clear.action'
 
 const ALL_ACTIONS: Type<Action>[] = [
 	PlayStateAction,
@@ -31,6 +33,8 @@ const ALL_ACTIONS: Type<Action>[] = [
 	JumpPlaybackAction,
 	SetVolumeAction,
 	SetIntensityAction,
+	QueueSkipAction,
+	QueueClearAction,
 ]
 
 export class ActionManager extends Manager<CompanionAction, Action> {
