@@ -1,7 +1,7 @@
-import { Player, SettingsStore } from '@theatrixx/xpresscue-connect'
+import { Player, Settings, SettingsStore } from '@theatrixx/xpresscue-connect'
 import { Colors } from '../constants'
-import { CompanionFeedback, CompanionFeedbackEvent } from '../../../../instance_skel_types'
-import { Feedback, FeedbackId } from './_feedback.types'
+import { CompanionFeedback, CompanionFeedbackBoolean, CompanionFeedbackEvent } from '../../../../instance_skel_types'
+import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
 import { Observable } from 'rxjs'
 import { PlayModePicker } from '../pickers'
 
@@ -28,5 +28,15 @@ export class PlayModeFeedback implements Feedback {
 
 	selectRefresh(): Observable<any> {
 		return this.player.state.select(SettingsStore, 'playMode')
+	}
+
+	static build(playMode: Settings['playMode'], style?: CompanionFeedbackBoolean['style']): FeedbackPreset {
+		return {
+			type: getFeedbackId(this),
+			options: {
+				playMode,
+			},
+			style,
+		}
 	}
 }

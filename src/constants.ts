@@ -3,6 +3,7 @@ import { rgb } from './utils/colors'
 export const Colors = {
 	BLACK: rgb(0, 0, 0),
 	WHITE: rgb(255, 255, 255),
+	GREY: rgb(80, 80, 80),
 	RED: rgb(255, 0, 0),
 	GREEN: rgb(0, 172, 0),
 	BLUE: rgb(0, 0, 255),
@@ -12,7 +13,7 @@ export const Colors = {
 /**
  * Temporary hack to get proper TypeScript support for built-in Base64 icons (and so that
  * we don't have to import `InstanceSkel` everywhere) */
-const Icons = require('../../../../lib/resources/icons') as {
+const CompanionIcons = require('../../../lib/resources/icons') as {
 	ICON_POWER_UNKNOWN: string
 	ICON_POWER_ON: string
 	ICON_POWER_OFF: string
@@ -38,4 +39,4 @@ const Icons = require('../../../../lib/resources/icons') as {
 	ICON_DOWN_LEFT: string
 }
 
-export { Icons }
+export { CompanionIcons }

@@ -1,5 +1,5 @@
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
-import { Action, ActionId } from './_action.types'
+import { Action, ActionId, ActionPreset, getActionId } from './_action.types'
 import { Player } from '@theatrixx/xpresscue-connect'
 
 @ActionId('take')
@@ -22,5 +22,14 @@ export class TakeAction implements Action {
 
 	handle(event: CompanionActionEvent): void {
 		this.player.take(event.options.without_play as boolean)
+	}
+
+	static build(without_play = false): ActionPreset {
+		return {
+			action: getActionId(this),
+			options: {
+				without_play,
+			},
+		}
 	}
 }
