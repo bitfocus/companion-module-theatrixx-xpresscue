@@ -1,7 +1,7 @@
 import { Player, DeviceStateStore } from '@theatrixx/xpresscue-connect'
 import { Colors } from '../constants'
-import { CompanionFeedback, CompanionFeedbackEvent } from '../../../../instance_skel_types'
-import { Feedback, FeedbackId } from './_feedback.types'
+import { CompanionFeedback, CompanionFeedbackBoolean, CompanionFeedbackEvent } from '../../../../instance_skel_types'
+import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
 import { Observable } from 'rxjs'
 
 @FeedbackId('play_state')
@@ -40,9 +40,19 @@ export class PlayStateFeedback implements Feedback {
 	selectRefresh(): Observable<any> {
 		return this.player.state.select(DeviceStateStore, 'playState')
 	}
+
+	static build(playState: PlayState, style?: CompanionFeedbackBoolean['style']): FeedbackPreset {
+		return {
+			type: getFeedbackId(this),
+			options: {
+				playState,
+			},
+			style,
+		}
+	}
 }
 
-enum PlayState {
+export enum PlayState {
 	Playing = 'playing',
 	Paused = 'paused',
 	Stopped = 'stopped',

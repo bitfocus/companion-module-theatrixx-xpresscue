@@ -1,5 +1,5 @@
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
-import { Action, ActionId } from './_action.types'
+import { Action, ActionId, ActionPreset, getActionId } from './_action.types'
 import { Player } from '@theatrixx/xpresscue-connect'
 
 @ActionId('play_state')
@@ -14,7 +14,7 @@ export class PlayStateAction implements Action {
 					id: 'state',
 					label: 'State',
 					type: 'dropdown',
-					default: 'togglePlayPause',
+					default: PlayStateCommand.TogglePlayPause,
 					choices: [
 						{ id: PlayStateCommand.TogglePlayPause, label: 'Toggle Play/Pause' },
 						{ id: PlayStateCommand.Play, label: 'Play' },
@@ -45,9 +45,18 @@ export class PlayStateAction implements Action {
 				break
 		}
 	}
+
+	static build(state: PlayStateCommand): ActionPreset {
+		return {
+			action: getActionId(this),
+			options: {
+				state,
+			},
+		}
+	}
 }
 
-enum PlayStateCommand {
+export enum PlayStateCommand {
 	TogglePlayPause = 'togglePlayPause',
 	Play = 'play',
 	Pause = 'pause',

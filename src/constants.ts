@@ -8,3 +8,7 @@ export const Colors = {
 	BLUE: rgb(0, 0, 255),
 	ORANGE: rgb(255, 80, 0),
 }
+
+const Icons = require('../../../../lib/resources/icons')
+
+export { Icons }
