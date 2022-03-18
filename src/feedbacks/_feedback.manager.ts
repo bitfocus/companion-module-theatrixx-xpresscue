@@ -9,6 +9,7 @@ import { PlayModeFeedback } from './play-mode.feedback'
 import { MultiDeviceModeFeedback } from './multidevice-mode.feedback'
 import { MediaNameFeedback } from './media-name.feedback'
 import { MediaStateFeedback } from './media-state.feedback'
+import { PlaylistNameFeedback } from './playlist-name.feedback'
 
 const ALL_FEEDBACKS: Type<Feedback>[] = [
 	PlayStateFeedback,
@@ -18,6 +19,7 @@ const ALL_FEEDBACKS: Type<Feedback>[] = [
 	MultiDeviceModeFeedback,
 	MediaNameFeedback,
 	MediaStateFeedback,
+	PlaylistNameFeedback,
 ]
 
 export class FeedbackManager extends Manager<CompanionFeedback, Feedback> {

@@ -1,10 +1,11 @@
 import { Player, Type } from '@theatrixx/xpresscue-connect'
 import { CompanionPreset } from '../../../../instance_skel_types'
 import { Manager } from '../utils/manager.class'
+import { LoadPlaylistPreset } from './load-playlist.preset'
 import { SetNextMediaPreset } from './set-next-media.preset'
 import { Preset, PresetWithoutCategory, PRESET_IDKEY } from './_preset.types'
 
-const ALL_PRESETS: Type<Preset>[] = [SetNextMediaPreset]
+const ALL_PRESETS: Type<Preset>[] = [SetNextMediaPreset, LoadPlaylistPreset]
 
 export class PresetManager extends Manager<PresetWithoutCategory[], Preset> {
 	constructor(protected readonly player: Player) {
