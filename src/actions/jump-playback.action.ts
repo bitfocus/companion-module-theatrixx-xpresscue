@@ -16,7 +16,7 @@ export class JumpPlaybackAction implements Action {
 					id: 'mode',
 					label: 'Jump From',
 					type: 'dropdown',
-					default: 'current',
+					default: JumpPlaybackMode.Current,
 					choices: [
 						{ id: JumpPlaybackMode.Current, label: 'Current' },
 						{ id: JumpPlaybackMode.End, label: 'End' },

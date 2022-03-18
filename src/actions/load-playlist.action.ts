@@ -17,7 +17,7 @@ export class LoadPlaylistAction implements Action {
 					id: 'mode',
 					label: 'Function',
 					type: 'dropdown',
-					default: 'replace',
+					default: LoadPlaylistMode.Replace,
 					choices: [
 						{ id: LoadPlaylistMode.Append, label: 'Append' },
 						{ id: LoadPlaylistMode.Replace, label: 'Replace' },

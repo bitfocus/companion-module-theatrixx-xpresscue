@@ -16,7 +16,7 @@ export class QueueSkipAction implements Action {
 					id: 'mode',
 					label: 'Mode',
 					type: 'dropdown',
-					default: 'next',
+					default: QueueSkipMode.Down,
 					choices: [
 						{ id: QueueSkipMode.Up, label: 'Up (Previous)' },
 						{ id: QueueSkipMode.Down, label: 'Down (Next)' },
