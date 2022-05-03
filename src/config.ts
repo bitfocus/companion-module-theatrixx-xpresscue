@@ -6,7 +6,7 @@ export interface PlayerConfig {
 	port: number
 }
 
-export function getConfigInputFields(instance: InstanceSkel<PlayerConfig>): SomeCompanionConfigField[] {
+export function ConfigFieldsFactory(instance: InstanceSkel<PlayerConfig>): SomeCompanionConfigField[] {
 	return [
 		{
 			type: 'text',

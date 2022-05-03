@@ -2,7 +2,7 @@ import InstanceSkel = require('../../../instance_skel')
 
 import { CompanionActionEvent, CompanionConfigField, CompanionSystem } from '../../../instance_skel_types'
 import { ActionManager } from './actions/_action.manager'
-import { getConfigInputFields, PlayerConfig } from './config'
+import { ConfigFieldsFactory, PlayerConfig } from './config'
 import { FeedbackManager } from './feedbacks/_feedback.manager'
 import { Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
@@ -46,7 +46,7 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 	}
 
 	config_fields(): CompanionConfigField[] {
-		return getConfigInputFields(this)
+		return ConfigFieldsFactory(this)
 	}
 
 	private setupListeners(): void {
