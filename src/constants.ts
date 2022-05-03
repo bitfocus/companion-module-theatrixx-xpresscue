@@ -8,6 +8,7 @@ export const Colors = {
 	GREEN: rgb(0, 172, 0),
 	BLUE: rgb(0, 0, 255),
 	ORANGE: rgb(255, 80, 0),
+	YELLOW: rgb(255, 255, 0),
 }
 
 /**

@@ -1,4 +1,4 @@
-import { MediaFileStore, Player, Playlist, PlaylistStore } from '@theatrixx/xpresscue-connect'
+import { Player, Playlist, PlaylistStore } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
 import { CompanionBankPreset } from '../../../../instance_skel_types'
 import { Colors } from '../constants'
