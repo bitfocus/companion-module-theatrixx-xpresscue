@@ -39,3 +39,12 @@ This module interfaces with and allows you to control the Theatrixx xPressCue me
 - **Device Busy**: Indicates wether the device is busy, or ready to accept new commands
 
 ### Presets
+
+- **Set Next Media**: Creates a complete, dynamic `Set Next Media` button, which includes:
+  - Set Next Media action
+  - Media Name feedback
+  - Media State feedback (will highlight the button when the Media is `Next` or `Current`)
+- **Load Playlist**: Creates a complete, dynamic `Load Playlist` button, which includes:
+  - Load Playlist action (Mode is `Replace` by default, user can select `Append` alternatively)
+  - Playlist Name feedback
+- **Transport Controls**: Provides a bank of pre-configured transport control buttons, with dynamic icons
