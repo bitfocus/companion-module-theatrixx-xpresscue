@@ -3,6 +3,8 @@
 This is the official Theatrixx xPressCue Companion module.
 This module interfaces with and allows you to control the Theatrixx xPressCue media player.
 
+Currently, this module supports the **version 1 xPressCue API** (v1.x.x)
+
 ### Configuration
 
 - **Host IP address**: The IP address of the remote xPressCue

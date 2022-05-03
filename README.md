@@ -3,6 +3,8 @@
 This is the official Theatrixx xPressCue Companion module.
 Interfaces with the Theatrixx xPressCue media player.
 
+Currently, this module supports the **version 1 xPressCue API** (v1.x.x)
+
 See [HELP.md](./HELP.md) and [LICENSE](./LICENSE)
 
 ## Developping
