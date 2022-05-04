@@ -24,11 +24,16 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 
 	init(): void {
 		this.status(this.STATUS_ERROR)
-		this.player.connect(this.config.host, this.config.port).then(() => {
-			this.refreshActions()
-			this.defineFeedbacks()
-			this.definePresets()
-		})
+		this.player
+			.connect(this.config.host, this.config.port)
+			.then(() => {
+				this.refreshActions()
+				this.defineFeedbacks()
+				this.definePresets()
+			})
+			.catch((e) => {
+				console.error(`Error connecting to device!`, e)
+			})
 	}
 
 	destroy(): void {
