@@ -22,12 +22,13 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 		this.setupListeners()
 	}
 
-	async init(): Promise<void> {
+	init(): void {
 		this.status(this.STATUS_ERROR)
-		await this.player.connect(this.config.host, this.config.port)
-		this.refreshActions()
-		this.defineFeedbacks()
-		this.definePresets()
+		this.player.connect(this.config.host, this.config.port).then(() => {
+			this.refreshActions()
+			this.defineFeedbacks()
+			this.definePresets()
+		})
 	}
 
 	destroy(): void {
