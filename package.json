@@ -21,7 +21,7 @@
   "scripts": {
     "postinstall": "yarn build",
     "build": "npx rimraf dist && npx typescript@~4.5 -p tsconfig.json",
-    "build:watch": "tsc -p tsconfig.json --watch",
+    "build:watch": "npx typescript@~4.5 -p tsconfig.json --watch",
     "dev": "yarn build:watch"
   },
   "author": "Gabriel Duschinsky",
