@@ -37,7 +37,7 @@ export class PlayStateFeedback implements Feedback {
 		}
 	}
 
-	selectRefresh(): Observable<any> {
+	selectCheckFeedback(): Observable<any> {
 		return this.player.state.select(DeviceStateStore, 'playState')
 	}
 

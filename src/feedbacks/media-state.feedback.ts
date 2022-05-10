@@ -4,6 +4,7 @@ import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback
 import { combineLatest, Observable } from 'rxjs'
 import { MediaPicker } from '../pickers'
 import { Colors } from '../constants'
+import { filterEntitiesChanged } from '../utils/operators'
 
 @FeedbackId('media_state')
 export class MediaStateFeedback implements Feedback {
@@ -46,8 +47,11 @@ export class MediaStateFeedback implements Feedback {
 	}
 
 	selectRefresh(): Observable<any> {
+		return this.player.state.select(MediaFileStore).pipe(filterEntitiesChanged())
+	}
+
+	selectCheckFeedback(): Observable<any> {
 		return combineLatest([
-			this.player.state.select(MediaFileStore),
 			this.player.state.select(DeviceStateStore, 'currentMedia'),
 			this.player.state.select(DeviceStateStore, 'nextMedia'),
 		])

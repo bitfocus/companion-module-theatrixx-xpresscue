@@ -27,7 +27,7 @@ export class MultiDeviceModeFeedback implements Feedback {
 		}
 	}
 
-	selectRefresh(): Observable<any> {
+	selectCheckFeedback(): Observable<any> {
 		return this.player.state.select(SettingsStore, 'isFollower')
 	}
 }

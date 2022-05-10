@@ -11,6 +11,8 @@ import { MediaNameFeedback } from './media-name.feedback'
 import { MediaStateFeedback } from './media-state.feedback'
 import { PlaylistNameFeedback } from './playlist-name.feedback'
 import { DeviceBusyFeedback } from './device-busy.feedback'
+import { merge, Observable, Subject } from 'rxjs'
+import { map } from 'rxjs/operators'
 
 const ALL_FEEDBACKS: Type<Feedback>[] = [
 	PlayStateFeedback,
@@ -25,8 +27,33 @@ const ALL_FEEDBACKS: Type<Feedback>[] = [
 ]
 
 export class FeedbackManager extends Manager<CompanionFeedback, Feedback> {
+	protected _checkFeedback$ = new Subject<string>()
+
 	constructor(protected readonly player: Player) {
 		super(player, FEEDBACK_IDKEY)
 		this.initialize(ALL_FEEDBACKS)
+	}
+
+	get checkFeedback$(): Observable<string> {
+		return this._checkFeedback$.asObservable()
+	}
+
+	protected initialize(types: Type<Feedback>[]): void {
+		const feedbackObs: Observable<string>[] = []
+		/** Initialize instances */
+		for (const type of types) {
+			const instance = new type(this.player)
+			const idKey = this.getIdKey(type)
+			this.instances.set(idKey, instance)
+			if (instance.selectCheckFeedback) {
+				const obs = instance.selectCheckFeedback().pipe(map(() => idKey))
+				feedbackObs.push(obs)
+			}
+		}
+
+		/** Create a combined refresh request */
+		merge(...feedbackObs).subscribe((ids) => this._checkFeedback$.next(ids))
+
+		super.initialize(types)
 	}
 }
