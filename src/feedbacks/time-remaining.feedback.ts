@@ -26,7 +26,7 @@ export class TimeRemainingFeedback implements Feedback {
 		}
 	}
 
-	selectRefresh(): Observable<any> {
+	selectCheckFeedback(): Observable<any> {
 		return this.player.state.select(DeviceStateStore, 'progress')
 	}
 }

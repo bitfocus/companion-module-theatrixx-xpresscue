@@ -26,7 +26,7 @@ export class OutputModeFeedback implements Feedback {
 		}
 	}
 
-	selectRefresh(): Observable<any> {
+	selectCheckFeedback(): Observable<string> {
 		return this.player.state.select(SettingsStore, 'videoOutputMode')
 	}
 }

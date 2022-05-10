@@ -1,6 +1,6 @@
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
 import { Action, ActionId } from './_action.types'
-import { Player } from '@theatrixx/xpresscue-connect'
+import { Player, TestPatternStore } from '@theatrixx/xpresscue-connect'
 import { TestPatternPicker } from '../pickers'
 import { Observable } from 'rxjs'
 
@@ -15,8 +15,8 @@ export class SetTestPatternAction implements Action {
 		}
 	}
 
-	selectRefresh(): Observable<void> {
-		return this.player.state.select('TestPattern')
+	selectRefresh(): Observable<any> {
+		return this.player.state.select(TestPatternStore)
 	}
 
 	handle(event: CompanionActionEvent): void {

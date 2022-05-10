@@ -26,7 +26,7 @@ export class PlayModeFeedback implements Feedback {
 		}
 	}
 
-	selectRefresh(): Observable<any> {
+	selectCheckFeedback(): Observable<any> {
 		return this.player.state.select(SettingsStore, 'playMode')
 	}
 

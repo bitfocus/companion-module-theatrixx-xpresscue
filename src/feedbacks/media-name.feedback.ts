@@ -3,6 +3,7 @@ import { CompanionFeedback } from '../../../../instance_skel_types'
 import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
 import { Observable } from 'rxjs'
 import { MediaPicker } from '../pickers'
+import { filterEntitiesChanged } from '../utils/operators'
 
 @FeedbackId('media_name')
 export class MediaNameFeedback implements Feedback {
@@ -27,8 +28,12 @@ export class MediaNameFeedback implements Feedback {
 		}
 	}
 
+	selectCheckFeedback(): Observable<any> {
+		return this.player.state.select(MediaFileStore).pipe(filterEntitiesChanged())
+	}
+
 	selectRefresh(): Observable<any> {
-		return this.player.state.select(MediaFileStore)
+		return this.player.state.select(MediaFileStore).pipe(filterEntitiesChanged())
 	}
 
 	static build(mediaId: string): FeedbackPreset {

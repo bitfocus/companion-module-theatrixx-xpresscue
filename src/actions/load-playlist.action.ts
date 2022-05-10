@@ -1,8 +1,9 @@
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
 import { PlaylistPicker } from '../pickers'
 import { Action, ActionId, ActionPreset, getActionId } from './_action.types'
-import { Player } from '@theatrixx/xpresscue-connect'
+import { Player, PlaylistStore } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
+import { filterEntitiesChanged } from '../utils/operators'
 
 @ActionId('load_playlist')
 export class LoadPlaylistAction implements Action {
@@ -27,8 +28,8 @@ export class LoadPlaylistAction implements Action {
 		}
 	}
 
-	selectRefresh(): Observable<void> {
-		return this.player.state.select('Playlist')
+	selectRefresh(): Observable<any> {
+		return this.player.state.select(PlaylistStore).pipe(filterEntitiesChanged())
 	}
 
 	handle(event: CompanionActionEvent): void {

@@ -32,7 +32,7 @@ export class Manager<C, T extends ManagedInstance<C>> {
 		/** Initialize instances */
 		for (const type of types) {
 			const instance = new type(this.player)
-			const idKey = (type as any)[this.instanceIdKey] as string
+			const idKey = this.getIdKey(type)
 			this.instances.set(idKey, instance)
 			if (instance.selectRefresh) {
 				const obs = instance.selectRefresh().pipe(map(() => idKey))
@@ -43,9 +43,22 @@ export class Manager<C, T extends ManagedInstance<C>> {
 		/** Create a combined refresh request */
 		merge(...refreshObs).subscribe((ids) => this._refresh$.next(ids))
 	}
+
+	/** Returns an instance type's `idKey` */
+	protected getIdKey(type: Type<T>): string {
+		return (type as any)[this.instanceIdKey] as string
+	}
 }
 
 export interface ManagedInstance<C> {
+	/**
+	 * Should return a definition `C` of the instance.
+	 */
 	get(): C
+	/**
+	 * Should return an Observable that will emit whenever the instance
+	 * needs to update its definition (for example, if items in a dropdown
+	 * menu need to be updated).
+	 */
 	selectRefresh?(): Observable<any>
 }

@@ -24,7 +24,7 @@ export class DeviceBusyFeedback implements Feedback {
 		}
 	}
 
-	selectRefresh(): Observable<any> {
+	selectCheckFeedback(): Observable<any> {
 		return this.player.state.select(DeviceStateStore, 'isBusy')
 	}
 }

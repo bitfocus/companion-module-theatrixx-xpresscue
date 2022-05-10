@@ -58,19 +58,14 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 	private setupListeners(): void {
 		this.player.client.connectionStateChanges.pipe(takeUntil(this.destroy$)).subscribe((state) => this.status(state))
 		this.actions.refresh$.pipe(takeUntil(this.destroy$)).subscribe(() => this.refreshActions())
-		this.feedbacks.refresh$.pipe(takeUntil(this.destroy$)).subscribe((id) => this.refreshFeedback(id))
+		this.feedbacks.refresh$.pipe(takeUntil(this.destroy$)).subscribe(() => this.defineFeedbacks())
+		this.feedbacks.checkFeedback$.pipe(takeUntil(this.destroy$)).subscribe((id) => this.checkFeedbacks(id))
 		this.presets.refresh$.pipe(takeUntil(this.destroy$)).subscribe(() => this.definePresets())
 	}
 
 	private refreshActions(): void {
 		const actions = this.actions.get()
 		this.setActions(actions)
-	}
-
-	private refreshFeedback(feedbackId: string): void {
-		const feedbacks = this.feedbacks.get()
-		this.setFeedbackDefinitions(feedbacks)
-		this.checkFeedbacks(feedbackId)
 	}
 
 	private defineFeedbacks(): void {

@@ -1,8 +1,9 @@
 import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
 import { MediaPicker } from '../pickers'
 import { Action, ActionId, ActionPreset, getActionId } from './_action.types'
-import { Player } from '@theatrixx/xpresscue-connect'
+import { MediaFileStore, Player } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
+import { filterEntitiesChanged } from '../utils/operators'
 
 @ActionId('set_next_media')
 export class SetNextMediaAction implements Action {
@@ -15,8 +16,8 @@ export class SetNextMediaAction implements Action {
 		}
 	}
 
-	selectRefresh(): Observable<void> {
-		return this.player.state.select('MediaFile')
+	selectRefresh(): Observable<any> {
+		return this.player.state.select(MediaFileStore).pipe(filterEntitiesChanged())
 	}
 
 	handle(event: CompanionActionEvent): void {
