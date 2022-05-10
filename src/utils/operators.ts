@@ -1,8 +1,8 @@
 import { SimpleEntity } from '@theatrixx/xpresscue-connect'
-import { Observable } from 'rxjs'
+import { MonoTypeOperatorFunction, Observable } from 'rxjs'
 import { distinctUntilChanged } from 'rxjs/operators'
 
-export function filterEntitiesChanged<T extends SimpleEntity>() {
+export function filterEntitiesChanged<T extends SimpleEntity>(): MonoTypeOperatorFunction<T[]> {
 	return (obs$: Observable<T[]>): Observable<T[]> => obs$.pipe(distinctUntilChanged(entitiesSame))
 }
 
