@@ -8,6 +8,7 @@ import { Subject } from 'rxjs'
 import { takeUntil } from 'rxjs/operators'
 import { Player } from '@theatrixx/xpresscue-connect'
 import { PresetManager } from './presets/_preset.manager'
+import { VariableManager } from './variables/_variable.manager'
 
 export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 	private player = new Player()
@@ -16,6 +17,7 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 	private actions = new ActionManager(this.player)
 	private feedbacks = new FeedbackManager(this.player)
 	private presets = new PresetManager(this.player)
+	private variables = new VariableManager(this.player)
 
 	constructor(system: CompanionSystem, id: string, config: PlayerConfig) {
 		super(system, id, config)
@@ -30,6 +32,7 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 				this.refreshActions()
 				this.defineFeedbacks()
 				this.definePresets()
+				this.defineVariables()
 			})
 			.catch((e) => {
 				console.error(`Error connecting to device!`, e)
@@ -61,6 +64,7 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 		this.feedbacks.refresh$.pipe(takeUntil(this.destroy$)).subscribe(() => this.defineFeedbacks())
 		this.feedbacks.checkFeedback$.pipe(takeUntil(this.destroy$)).subscribe((id) => this.checkFeedbacks(id))
 		this.presets.refresh$.pipe(takeUntil(this.destroy$)).subscribe(() => this.definePresets())
+		this.variables.update$.pipe(takeUntil(this.destroy$)).subscribe(([id, value]) => this.setVariable(id, value))
 	}
 
 	private refreshActions(): void {
@@ -77,5 +81,10 @@ export class PlayerInstance extends InstanceSkel<PlayerConfig> {
 	private definePresets(): void {
 		const presets = this.presets.getFlat()
 		this.setPresetDefinitions(presets)
+	}
+
+	private defineVariables(): void {
+		const variables = this.variables.getFlat()
+		this.setVariableDefinitions(variables)
 	}
 }
