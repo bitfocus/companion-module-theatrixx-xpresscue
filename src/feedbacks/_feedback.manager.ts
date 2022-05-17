@@ -39,11 +39,9 @@ export class FeedbackManager extends Manager<CompanionFeedback, Feedback> {
 	}
 
 	protected initialize(types: Type<Feedback>[]): void {
+		super.initialize(types)
 		const feedbackObs: Observable<string>[] = []
-		/** Initialize instances */
-		for (const type of types) {
-			const instance = new type(this.player)
-			const idKey = this.getIdKey(type)
+		for (const [idKey, instance] of this.instances) {
 			this.instances.set(idKey, instance)
 			if (instance.selectCheckFeedback) {
 				const obs = instance.selectCheckFeedback().pipe(map(() => idKey))
@@ -53,7 +51,5 @@ export class FeedbackManager extends Manager<CompanionFeedback, Feedback> {
 
 		/** Create a combined refresh request */
 		merge(...feedbackObs).subscribe((ids) => this._checkFeedback$.next(ids))
-
-		super.initialize(types)
 	}
 }
