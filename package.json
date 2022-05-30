@@ -28,7 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "rxjs": "6",
-    "@theatrixx/xpresscue-connect": "1.0.0"
+    "@theatrixx/xpresscue-connect": "1.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
