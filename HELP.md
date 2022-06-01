@@ -50,3 +50,11 @@ Currently, this module supports the **version 1 xPressCue API** (v1.x.x)
   - Load Playlist action (Mode is `Replace` by default, user can select `Append` alternatively)
   - Playlist Name feedback
 - **Transport Controls**: Provides a bank of pre-configured transport control buttons, with dynamic icons
+
+### Variables
+
+- **Time Remaining (`time_remaining`)**: The amout of time remaining for the current media, formatted as HH:MM.ss.mmmm
+- **Time Elapsed (`time_elapsed`)**: The amout of time elapsed for the current media, formatted as HH:MM.ss.mmmm
+- **Device Name (`device_name`)**: The Name of the connected device.
+- **Device Name (`device_owner`)**: The Owner of the connected device.
+- **SDI Sync (`sdi_sync`)**: The Sync status of the SDI outputs. Will be either `Freerun` or frequency, in Hertz.
