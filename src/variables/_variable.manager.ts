@@ -9,11 +9,13 @@ import { TimeRemainingVariable } from './time-remaining.variable'
 import { DeviceNameVariable } from './device-name.variable'
 import { TimeElapsedVariable } from './time-elapsed.variable'
 import { SdiSyncVariable } from './sdi-sync.variable'
+import { DeviceOwnerVariable } from './device-owner.variable'
 
 const ALL_VARIABLES: Type<Variable>[] = [
 	TimeRemainingVariable,
 	TimeElapsedVariable,
 	DeviceNameVariable,
+	DeviceOwnerVariable,
 	SdiSyncVariable,
 ]
 
