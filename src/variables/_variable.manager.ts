@@ -8,8 +8,14 @@ import { Variable, VARIABLE_IDKEY } from './_variable.type'
 import { TimeRemainingVariable } from './time-remaining.variable'
 import { DeviceNameVariable } from './device-name.variable'
 import { TimeElapsedVariable } from './time-elapsed.variable'
+import { SdiSyncVariable } from './sdi-sync.variable'
 
-const ALL_VARIABLES: Type<Variable>[] = [TimeRemainingVariable, TimeElapsedVariable, DeviceNameVariable]
+const ALL_VARIABLES: Type<Variable>[] = [
+	TimeRemainingVariable,
+	TimeElapsedVariable,
+	DeviceNameVariable,
+	SdiSyncVariable,
+]
 
 export class VariableManager extends Manager<string, Variable> {
 	protected _update$ = new Subject<[string, string]>()
