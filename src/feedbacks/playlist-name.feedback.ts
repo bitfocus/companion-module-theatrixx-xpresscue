@@ -3,6 +3,7 @@ import { CompanionFeedback } from '../../../../instance_skel_types'
 import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
 import { Observable } from 'rxjs'
 import { PlaylistPicker } from '../pickers'
+import { filterEntitiesChanged } from '../utils/operators'
 
 @FeedbackId('playlist_name')
 export class PlaylistNameFeedback implements Feedback {
@@ -28,7 +29,11 @@ export class PlaylistNameFeedback implements Feedback {
 	}
 
 	selectCheckFeedback(): Observable<any> {
-		return this.player.state.select(PlaylistStore)
+		return this.player.state.select(PlaylistStore).pipe(filterEntitiesChanged())
+	}
+
+	selectRefresh(): Observable<any> {
+		return this.player.state.select(PlaylistStore).pipe(filterEntitiesChanged())
 	}
 
 	static build(playlistId: string): FeedbackPreset {
