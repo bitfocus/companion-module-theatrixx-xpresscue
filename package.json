@@ -27,8 +27,9 @@
   "author": "Gabriel Duschinsky",
   "license": "MIT",
   "dependencies": {
-    "rxjs": "6",
-    "@theatrixx/xpresscue-connect": "1.1.0"
+    "@theatrixx/xpresscue-connect": "1.2.0",
+    "jimp": "^0.16.1",
+    "rxjs": "6"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",
