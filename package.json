@@ -24,7 +24,7 @@
     "build:watch": "npx typescript@~4.5 -p tsconfig.json --watch",
     "dev": "yarn build:watch"
   },
-  "author": "Gabriel Duschinsky",
+  "author": "Gabriel Duschinsky <gduschinsky@theatrixx.com>",
   "license": "MIT",
   "dependencies": {
     "@theatrixx/xpresscue-connect": "1.2.0",
