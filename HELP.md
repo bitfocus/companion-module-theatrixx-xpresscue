@@ -31,6 +31,7 @@ Currently, this module supports the **version 1 xPressCue API** (v1.x.x)
 ### Feedbacks
 
 - **Media Name**: Dynamically updates the button text to match the name of the selected Media
+- **Media Thumbnail**: Dynamically updates the button PNG thumbnail to match the thumbnail of the selected Media. If the Thumbnail is updated on the xPressCue, it will updated here as well.
 - **Media State**: Indicates wether the selected Media is `Current` or `Next`
 - **Time Remaining**: Indicates wether the `Remaining` time on the device matches the selected value
 - **Play State**: Indicates wether the device is currently in the selected Play State (`Playing`, `Paused` or `Stopped`)
