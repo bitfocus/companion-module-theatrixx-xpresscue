@@ -1,18 +1,15 @@
 import { MediaFile, MediaFileStore, Player } from '@theatrixx/xpresscue-connect'
 import { CompanionFeedback } from '../../../../instance_skel_types'
 import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
-import { Observable, Subject } from 'rxjs'
+import { Observable } from 'rxjs'
 import { MediaPicker } from '../pickers'
 import { distinctArrayElements, filterEntitiesChanged } from '../utils/operators'
-import Jimp from 'jimp/es'
 import { map, tap } from 'rxjs/operators'
 import { isArray } from 'lodash'
+import { updateChache, get, cacheUpdated$ } from '../utils/png-cache'
 
 @FeedbackId('media_thumbnail')
 export class MediaThumbnailFeedback implements Feedback {
-	private cache = new Map<string, string>()
-	private cacheUpdated$ = new Subject<void>()
-
 	constructor(private readonly player: Player) {
 		this.trackThumbnailChanges().subscribe()
 	}
@@ -29,7 +26,7 @@ export class MediaThumbnailFeedback implements Feedback {
 				if (!media) {
 					return false
 				}
-				const png64 = this.cache.get(media._id)
+				const png64 = get(media._id)
 				if (!png64) {
 					return false
 				}
@@ -45,7 +42,7 @@ export class MediaThumbnailFeedback implements Feedback {
 	}
 
 	selectCheckFeedback(): Observable<any> {
-		return this.cacheUpdated$.asObservable()
+		return cacheUpdated$
 	}
 
 	selectRefresh(): Observable<any> {
@@ -55,26 +52,8 @@ export class MediaThumbnailFeedback implements Feedback {
 	private updateChache(ids: string | string[], force = false): void {
 		ids = isArray(ids) ? ids : [ids]
 		for (const id of ids) {
-			const cached = this.cache.get(id)
-			if (cached && force === false) {
-				return
-			}
-			this.loadThumbnail(id)
-		}
-	}
-
-	private async loadThumbnail(id: string): Promise<void> {
-		const api = this.player.client.api
-		const url = `${api}media/${id}/thumbnail`
-		try {
-			const image = await Jimp.read(url)
-			const resized = image.contain(72, 58)
-			const base64 = await resized.getBase64Async(Jimp.MIME_PNG)
-			const base64Str = base64.split(',')[1]
-			this.cache.set(id, base64Str)
-			this.cacheUpdated$.next()
-		} catch (e) {
-			console.error(`Thumbnail creation failed for media ${id} at URL ${url}`, e)
+			const url = this.getThumbnailUrl(id)
+			updateChache(id, url, force)
 		}
 	}
 
@@ -91,6 +70,11 @@ export class MediaThumbnailFeedback implements Feedback {
 		return newArray.filter(
 			(el) => el.thumbnailPoint !== previousArray.find((pEl) => pEl._id === el._id)?.thumbnailPoint
 		)
+	}
+
+	private getThumbnailUrl(id: string): string {
+		const api = this.player.client.api
+		return `${api}media/${id}/thumbnail`
 	}
 
 	static build(mediaId: string): FeedbackPreset {

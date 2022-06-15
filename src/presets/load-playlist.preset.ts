@@ -5,6 +5,7 @@ import { Colors } from '../constants'
 import { Preset, PresetCategory, PresetWithoutCategory } from './_preset.types'
 import { PlaylistNameFeedback } from '../feedbacks/playlist-name.feedback'
 import { LoadPlaylistAction } from '../actions/load-playlist.action'
+import { filterEntitiesChanged } from '../utils/operators'
 
 @PresetCategory('Load Playlist')
 export class LoadPlaylistPreset implements Preset {
@@ -16,7 +17,7 @@ export class LoadPlaylistPreset implements Preset {
 	}
 
 	selectRefresh(): Observable<any> {
-		return this.player.state.select(PlaylistStore)
+		return this.player.state.select(PlaylistStore).pipe(filterEntitiesChanged())
 	}
 
 	private static createFromPlaylist(item: Playlist): PresetWithoutCategory {
