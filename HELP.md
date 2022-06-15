@@ -43,9 +43,13 @@ Currently, this module supports the **version 1 xPressCue API** (v1.x.x)
 
 ### Presets
 
-- **Set Next Media**: Creates a complete, dynamic `Set Next Media` button, which includes:
+- **Set Next Media (Text)**: Creates a complete, dynamic `Set Next Media` text button, which includes:
   - Set Next Media action
   - Media Name feedback
+  - Media State feedback (will highlight the button when the Media is `Next` or `Current`)
+- **Set Next Media (Thumbnail)**: Creates a complete, dynamic `Set Next Media` thumbnail button, which includes:
+  - Set Next Media action
+  - Media Thumbnail feedback
   - Media State feedback (will highlight the button when the Media is `Next` or `Current`)
 - **Load Playlist**: Creates a complete, dynamic `Load Playlist` button, which includes:
   - Load Playlist action (Mode is `Replace` by default, user can select `Append` alternatively)
