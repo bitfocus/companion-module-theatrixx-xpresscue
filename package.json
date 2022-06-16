@@ -25,6 +25,9 @@
     "dev": "yarn build:watch"
   },
   "author": "Gabriel Duschinsky <gduschinsky@theatrixx.com>",
+  "bugs": {
+		"url": "https://github.com/bitfocus/companion-module-theatrixx-xpresscue/issues"
+	},
   "license": "MIT",
   "dependencies": {
     "@theatrixx/xpresscue-connect": "1.2.0",
