@@ -24,11 +24,15 @@
     "build:watch": "npx typescript@~4.5 -p tsconfig.json --watch",
     "dev": "yarn build:watch"
   },
-  "author": "Gabriel Duschinsky",
+  "author": "Gabriel Duschinsky <gduschinsky@theatrixx.com>",
+  "bugs": {
+		"url": "https://github.com/bitfocus/companion-module-theatrixx-xpresscue/issues"
+	},
   "license": "MIT",
   "dependencies": {
-    "rxjs": "6",
-    "@theatrixx/xpresscue-connect": "1.1.0"
+    "@theatrixx/xpresscue-connect": "1.2.0",
+    "jimp": "^0.16.1",
+    "rxjs": "6"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",

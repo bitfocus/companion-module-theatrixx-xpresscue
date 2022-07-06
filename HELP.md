@@ -31,6 +31,7 @@ Currently, this module supports the **version 1 xPressCue API** (v1.x.x)
 ### Feedbacks
 
 - **Media Name**: Dynamically updates the button text to match the name of the selected Media
+- **Media Thumbnail**: Dynamically updates the button PNG thumbnail to match the thumbnail of the selected Media. If the Thumbnail is updated on the xPressCue, it will updated here as well.
 - **Media State**: Indicates wether the selected Media is `Current` or `Next`
 - **Time Remaining**: Indicates wether the `Remaining` time on the device matches the selected value
 - **Play State**: Indicates wether the device is currently in the selected Play State (`Playing`, `Paused` or `Stopped`)
@@ -42,9 +43,13 @@ Currently, this module supports the **version 1 xPressCue API** (v1.x.x)
 
 ### Presets
 
-- **Set Next Media**: Creates a complete, dynamic `Set Next Media` button, which includes:
+- **Set Next Media (Text)**: Creates a complete, dynamic `Set Next Media` text button, which includes:
   - Set Next Media action
   - Media Name feedback
+  - Media State feedback (will highlight the button when the Media is `Next` or `Current`)
+- **Set Next Media (Thumbnail)**: Creates a complete, dynamic `Set Next Media` thumbnail button, which includes:
+  - Set Next Media action
+  - Media Thumbnail feedback
   - Media State feedback (will highlight the button when the Media is `Next` or `Current`)
 - **Load Playlist**: Creates a complete, dynamic `Load Playlist` button, which includes:
   - Load Playlist action (Mode is `Replace` by default, user can select `Append` alternatively)

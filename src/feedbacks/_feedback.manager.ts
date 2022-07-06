@@ -13,6 +13,7 @@ import { PlaylistNameFeedback } from './playlist-name.feedback'
 import { DeviceBusyFeedback } from './device-busy.feedback'
 import { merge, Observable, Subject } from 'rxjs'
 import { map } from 'rxjs/operators'
+import { MediaThumbnailFeedback } from './media-thumbnail.feedback'
 
 const ALL_FEEDBACKS: Type<Feedback>[] = [
 	PlayStateFeedback,
@@ -21,6 +22,7 @@ const ALL_FEEDBACKS: Type<Feedback>[] = [
 	PlayModeFeedback,
 	MultiDeviceModeFeedback,
 	MediaNameFeedback,
+	MediaThumbnailFeedback,
 	MediaStateFeedback,
 	PlaylistNameFeedback,
 	DeviceBusyFeedback,
