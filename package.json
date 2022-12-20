@@ -1,6 +1,6 @@
 {
   "name": "theatrixx-xpresscue",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "api_version": "1.0.0",
   "keywords": [
     "Player",
@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "postinstall": "yarn build",
-    "build": "npx rimraf dist && npx typescript@~4.5 -p tsconfig.json",
+    "build": "npx rimraf dist && npx --package=typescript@~4.5 -c 'tsc -p tsconfig.json'",
     "build:watch": "npx typescript@~4.5 -p tsconfig.json --watch",
     "dev": "yarn build:watch"
   },
