@@ -102,5 +102,15 @@ export function MultiDeviceModePicker(): CompanionInputFieldDropdown {
 }
 
 function getDropdown<T extends SimpleEntity>(entities: T[]): DropdownChoice[] {
-	return entities.map((m) => ({ id: m._id, label: m.name }))
+	return entities.sort(sortAlpha).map((m) => ({ id: m._id, label: m.name }))
+}
+
+function sortAlpha<T extends SimpleEntity>(a: T, b: T): -1 | 1 | 0 {
+	if (a.name < b.name) {
+		return -1
+	}
+	if (a.name > b.name) {
+		return 1
+	}
+	return 0
 }
