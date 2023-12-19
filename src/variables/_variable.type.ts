@@ -1,5 +1,5 @@
-import { createClassKeyDecorator } from '../utils/decorators'
-import { ManagedInstance } from '../utils/manager.class'
+import { createClassKeyDecorator } from '../utils/decorators.js'
+import { ManagedInstance } from '../utils/manager.class.js'
 import { Observable } from 'rxjs'
 
 export const VARIABLE_IDKEY = 'variableId'

@@ -1,8 +1,8 @@
 import { Player, PlaylistStore } from '@theatrixx/xpresscue-connect'
-import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
+import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types.js'
 import { Observable } from 'rxjs'
-import { PlaylistPicker } from '../pickers'
-import { filterEntitiesChanged } from '../utils/operators'
+import { PlaylistPicker } from '../pickers.js'
+import { filterEntitiesChanged } from '../utils/operators.js'
 import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('playlist_name')

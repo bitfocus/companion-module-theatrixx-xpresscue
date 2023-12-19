@@ -1,8 +1,8 @@
-import { MediaPicker } from '../pickers'
-import { Action, ActionId, ActionPreset, getActionId } from './_action.types'
+import { MediaPicker } from '../pickers.js'
+import { Action, ActionId, ActionPreset, getActionId } from './_action.types.js'
 import { MediaFileStore, Player } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
-import { filterEntitiesChanged } from '../utils/operators'
+import { filterEntitiesChanged } from '../utils/operators.js'
 import { CompanionActionDefinition } from '@companion-module/base'
 
 @ActionId('set_next_media')

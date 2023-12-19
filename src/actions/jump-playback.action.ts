@@ -1,6 +1,6 @@
 import { CompanionActionDefinition } from '@companion-module/base'
-import { TimePicker } from '../pickers'
-import { Action, ActionId } from './_action.types'
+import { TimePicker } from '../pickers.js'
+import { Action, ActionId } from './_action.types.js'
 import { Player } from '@theatrixx/xpresscue-connect'
 
 @ActionId('jump_playback')

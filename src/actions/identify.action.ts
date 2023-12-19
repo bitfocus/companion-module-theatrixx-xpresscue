@@ -1,5 +1,5 @@
 import { CompanionActionDefinition } from '@companion-module/base'
-import { Action, ActionId } from './_action.types'
+import { Action, ActionId } from './_action.types.js'
 import { Player } from '@theatrixx/xpresscue-connect'
 
 @ActionId('identify')

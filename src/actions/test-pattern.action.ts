@@ -1,6 +1,6 @@
-import { Action, ActionId } from './_action.types'
+import { Action, ActionId } from './_action.types.js'
 import { Player, TestPatternStore } from '@theatrixx/xpresscue-connect'
-import { TestPatternPicker } from '../pickers'
+import { TestPatternPicker } from '../pickers.js'
 import { Observable } from 'rxjs'
 import { CompanionActionDefinition } from '@companion-module/base'
 

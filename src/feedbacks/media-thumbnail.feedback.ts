@@ -1,11 +1,11 @@
 import { MediaFile, MediaFileStore, Player } from '@theatrixx/xpresscue-connect'
-import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
+import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types.js'
 import { Observable } from 'rxjs'
-import { MediaPicker } from '../pickers'
-import { distinctArrayElements, filterEntitiesChanged } from '../utils/operators'
-import { map, tap } from 'rxjs/operators'
+import { MediaPicker } from '../pickers.js'
+import { distinctArrayElements, filterEntitiesChanged } from '../utils/operators.js'
+import { map, tap } from 'rxjs/operators/index.js'
 import { isArray } from 'lodash-es'
-import { updateChache, get, cacheUpdated$ } from '../utils/png-cache'
+import { updateChache, get, cacheUpdated$ } from '../utils/png-cache.js'
 import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('media_thumbnail')

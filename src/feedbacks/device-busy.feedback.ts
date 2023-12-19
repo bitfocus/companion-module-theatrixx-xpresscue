@@ -1,7 +1,7 @@
 import { DeviceStateStore, Player } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
-import { Colors } from '../constants'
-import { Feedback, FeedbackId } from './_feedback.types'
+import { Colors } from '../constants.js'
+import { Feedback, FeedbackId } from './_feedback.types.js'
 import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('device_busy')

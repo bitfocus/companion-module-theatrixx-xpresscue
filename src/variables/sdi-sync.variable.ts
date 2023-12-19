@@ -1,7 +1,7 @@
 import { Player, IoStateStore, VideoResolution } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
-import { Variable, VariableId } from './_variable.type'
-import { distinctUntilChanged, map } from 'rxjs/operators'
+import { Variable, VariableId } from './_variable.type.js'
+import { distinctUntilChanged, map } from 'rxjs/operators/index.js'
 
 @VariableId('sdi_sync')
 export class SdiSyncVariable implements Variable {

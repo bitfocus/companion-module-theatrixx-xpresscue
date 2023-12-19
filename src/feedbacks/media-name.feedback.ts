@@ -1,8 +1,8 @@
 import { MediaFileStore, Player } from '@theatrixx/xpresscue-connect'
-import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
+import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types.js'
 import { Observable } from 'rxjs'
-import { MediaPicker } from '../pickers'
-import { filterEntitiesChanged } from '../utils/operators'
+import { MediaPicker } from '../pickers.js'
+import { filterEntitiesChanged } from '../utils/operators.js'
 import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('media_name')

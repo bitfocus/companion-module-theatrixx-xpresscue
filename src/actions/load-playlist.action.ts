@@ -1,8 +1,8 @@
-import { PlaylistPicker } from '../pickers'
-import { Action, ActionId, ActionPreset, getActionId } from './_action.types'
+import { PlaylistPicker } from '../pickers.js'
+import { Action, ActionId, ActionPreset, getActionId } from './_action.types.js'
 import { Player, PlaylistStore } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
-import { filterEntitiesChanged } from '../utils/operators'
+import { filterEntitiesChanged } from '../utils/operators.js'
 import { CompanionActionDefinition } from '@companion-module/base'
 
 @ActionId('load_playlist')

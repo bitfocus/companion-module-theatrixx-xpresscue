@@ -1,6 +1,6 @@
 import { CompanionButtonPresetDefinition } from '@companion-module/base'
-import { createClassKeyDecorator } from '../utils/decorators'
-import { ManagedInstance } from '../utils/manager.class'
+import { createClassKeyDecorator } from '../utils/decorators.js'
+import { ManagedInstance } from '../utils/manager.class.js'
 
 export const PRESET_IDKEY = 'presetCategory'
 

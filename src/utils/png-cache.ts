@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs'
-import { share } from 'rxjs/operators'
+import { share } from 'rxjs/operators/index.js'
 import Jimp from 'jimp'
 
 /**

@@ -1,8 +1,8 @@
-import { Colors } from '../constants'
-import { Feedback, FeedbackId } from './_feedback.types'
+import { Colors } from '../constants.js'
+import { Feedback, FeedbackId } from './_feedback.types.js'
 import { Player, DeviceStateStore } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
-import { TimePicker } from '../pickers'
+import { TimePicker } from '../pickers.js'
 import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('time_remaining')

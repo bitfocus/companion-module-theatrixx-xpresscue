@@ -1,6 +1,6 @@
 import { CompanionFeedbackDefinition, CompanionPresetFeedback } from '@companion-module/base'
-import { createClassKeyDecorator } from '../utils/decorators'
-import { ManagedInstance } from '../utils/manager.class'
+import { createClassKeyDecorator } from '../utils/decorators.js'
+import { ManagedInstance } from '../utils/manager.class.js'
 import { Type } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
 

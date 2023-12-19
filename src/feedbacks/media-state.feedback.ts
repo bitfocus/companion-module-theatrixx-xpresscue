@@ -1,9 +1,9 @@
 import { DeviceStateStore, MediaFileStore, Player } from '@theatrixx/xpresscue-connect'
-import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
+import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types.js'
 import { combineLatest, Observable } from 'rxjs'
-import { MediaPicker } from '../pickers'
-import { Colors } from '../constants'
-import { filterEntitiesChanged } from '../utils/operators'
+import { MediaPicker } from '../pickers.js'
+import { Colors } from '../constants.js'
+import { filterEntitiesChanged } from '../utils/operators.js'
 import { CompanionFeedbackButtonStyleResult, CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('media_state')

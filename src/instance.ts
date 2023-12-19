@@ -1,12 +1,12 @@
 import { InstanceBase, InstanceStatus, SomeCompanionConfigField } from '@companion-module/base'
-import { ActionManager } from './actions/_action.manager'
-import { ConfigFieldsFactory, PlayerConfig } from './config'
-import { FeedbackManager } from './feedbacks/_feedback.manager'
+import { ActionManager } from './actions/_action.manager.js'
+import { ConfigFieldsFactory, PlayerConfig } from './config.js'
+import { FeedbackManager } from './feedbacks/_feedback.manager.js'
 import { Subject } from 'rxjs'
-import { takeUntil } from 'rxjs/operators'
+import { takeUntil } from 'rxjs/operators/index.js'
 import { ConnectionState, Player } from '@theatrixx/xpresscue-connect'
-import { PresetManager } from './presets/_preset.manager'
-import { VariableManager } from './variables/_variable.manager'
+import { PresetManager } from './presets/_preset.manager.js'
+import { VariableManager } from './variables/_variable.manager.js'
 
 export class PlayerInstance extends InstanceBase<PlayerConfig> {
 	private config: PlayerConfig = { host: '', port: 0 }

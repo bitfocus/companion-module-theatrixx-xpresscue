@@ -1,10 +1,10 @@
 import { Player, Playlist, PlaylistStore } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
-import { Colors } from '../constants'
-import { Preset, PresetCategory, PresetWithoutCategory } from './_preset.types'
-import { PlaylistNameFeedback } from '../feedbacks/playlist-name.feedback'
-import { LoadPlaylistAction } from '../actions/load-playlist.action'
-import { filterEntitiesChanged } from '../utils/operators'
+import { Colors } from '../constants.js'
+import { Preset, PresetCategory, PresetWithoutCategory } from './_preset.types.js'
+import { PlaylistNameFeedback } from '../feedbacks/playlist-name.feedback.js'
+import { LoadPlaylistAction } from '../actions/load-playlist.action.js'
+import { filterEntitiesChanged } from '../utils/operators.js'
 import { CompanionButtonStyleProps } from '@companion-module/base'
 
 @PresetCategory('Load Playlist')

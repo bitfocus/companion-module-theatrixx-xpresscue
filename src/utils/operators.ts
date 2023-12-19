@@ -1,7 +1,7 @@
 import { SimpleEntity } from '@theatrixx/xpresscue-connect'
 import { isEqual } from 'lodash-es'
 import { MonoTypeOperatorFunction, Observable } from 'rxjs'
-import { auditTime, distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators'
+import { auditTime, distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators/index.js'
 
 export function filterEntitiesChanged<T extends SimpleEntity>(): MonoTypeOperatorFunction<T[]> {
 	return (obs$: Observable<T[]>): Observable<T[]> => obs$.pipe(distinctUntilChanged(entitiesSame))

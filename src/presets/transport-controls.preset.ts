@@ -1,9 +1,9 @@
-import { Colors, CompanionIcons } from '../constants'
-import { Preset, PresetCategory, PresetWithoutCategory } from './_preset.types'
-import { PlayStateAction, PlayStateCommand } from '../actions/play-state.action'
-import { PlayState, PlayStateFeedback } from '../feedbacks/play-state.feedback'
-import { TakeAction } from '../actions/take.action'
-import { PlayModeFeedback } from '../feedbacks/play-mode.feedback'
+import { Colors, CompanionIcons } from '../constants.js'
+import { Preset, PresetCategory, PresetWithoutCategory } from './_preset.types.js'
+import { PlayStateAction, PlayStateCommand } from '../actions/play-state.action.js'
+import { PlayState, PlayStateFeedback } from '../feedbacks/play-state.feedback.js'
+import { TakeAction } from '../actions/take.action.js'
+import { PlayModeFeedback } from '../feedbacks/play-mode.feedback.js'
 
 @PresetCategory('Transport Controls')
 export class TransportControlsPreset implements Preset {

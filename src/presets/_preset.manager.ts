@@ -1,9 +1,9 @@
 import { Player, Type } from '@theatrixx/xpresscue-connect'
-import { Manager } from '../utils/manager.class'
-import { LoadPlaylistPreset } from './load-playlist.preset'
-import { SetNextMediaTextPreset, SetNextMediaThumbnailPreset } from './set-next-media.preset'
-import { TransportControlsPreset } from './transport-controls.preset'
-import { Preset, PresetWithoutCategory, PRESET_IDKEY } from './_preset.types'
+import { Manager } from '../utils/manager.class.js'
+import { LoadPlaylistPreset } from './load-playlist.preset.js'
+import { SetNextMediaTextPreset, SetNextMediaThumbnailPreset } from './set-next-media.preset.js'
+import { TransportControlsPreset } from './transport-controls.preset.js'
+import { Preset, PresetWithoutCategory, PRESET_IDKEY } from './_preset.types.js'
 import { CompanionPresetDefinitions } from '@companion-module/base'
 
 const ALL_PRESETS: Type<Preset>[] = [

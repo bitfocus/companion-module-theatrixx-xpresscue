@@ -1,15 +1,15 @@
 import { Player, Type } from '@theatrixx/xpresscue-connect'
 import { CompanionVariableDefinition } from '@companion-module/base'
-import { Manager } from '../utils/manager.class'
+import { Manager } from '../utils/manager.class.js'
 
 import { merge, Observable, Subject } from 'rxjs'
-import { map } from 'rxjs/operators'
-import { Variable, VARIABLE_IDKEY } from './_variable.type'
-import { TimeRemainingVariable } from './time-remaining.variable'
-import { DeviceNameVariable } from './device-name.variable'
-import { TimeElapsedVariable } from './time-elapsed.variable'
-import { SdiSyncVariable } from './sdi-sync.variable'
-import { DeviceOwnerVariable } from './device-owner.variable'
+import { map } from 'rxjs/operators/index.js'
+import { Variable, VARIABLE_IDKEY } from './_variable.type.js'
+import { TimeRemainingVariable } from './time-remaining.variable.js'
+import { DeviceNameVariable } from './device-name.variable.js'
+import { TimeElapsedVariable } from './time-elapsed.variable.js'
+import { SdiSyncVariable } from './sdi-sync.variable.js'
+import { DeviceOwnerVariable } from './device-owner.variable.js'
 
 const ALL_VARIABLES: Type<Variable>[] = [
 	TimeRemainingVariable,

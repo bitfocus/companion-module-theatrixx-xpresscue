@@ -1,8 +1,8 @@
 import { Player, SettingsStore } from '@theatrixx/xpresscue-connect'
-import { Colors } from '../constants'
-import { Feedback, FeedbackId } from './_feedback.types'
+import { Colors } from '../constants.js'
+import { Feedback, FeedbackId } from './_feedback.types.js'
 import { Observable } from 'rxjs'
-import { VideoOutputModePicker } from '../pickers'
+import { VideoOutputModePicker } from '../pickers.js'
 import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('output_mode')

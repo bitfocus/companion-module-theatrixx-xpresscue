@@ -1,6 +1,6 @@
-import { Action, ActionId } from './_action.types'
+import { Action, ActionId } from './_action.types.js'
 import { Player, Settings } from '@theatrixx/xpresscue-connect'
-import { PercentPicker } from '../pickers'
+import { PercentPicker } from '../pickers.js'
 import { CompanionActionDefinition } from '@companion-module/base'
 
 @ActionId('set_intensity')
