@@ -1,4 +1,4 @@
-import { CompanionAction } from '../../../../instance_skel_types'
+import { CompanionActionDefinition } from '@companion-module/base'
 import { Action, ActionId } from './_action.types'
 import { Player } from '@theatrixx/xpresscue-connect'
 
@@ -6,14 +6,13 @@ import { Player } from '@theatrixx/xpresscue-connect'
 export class NextFrameAction implements Action {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionAction {
+	get(): CompanionActionDefinition {
 		return {
-			label: 'Next Frame',
+			name: 'Next Frame',
 			options: [],
+			callback: () => {
+				this.player.nextFrame()
+			},
 		}
-	}
-
-	handle(): void {
-		this.player.nextFrame()
 	}
 }

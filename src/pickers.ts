@@ -1,4 +1,4 @@
-import { CompanionInputFieldDropdown, CompanionInputFieldNumber, DropdownChoice } from '../../../instance_skel_types'
+import { CompanionInputFieldDropdown, CompanionInputFieldNumber, DropdownChoice } from '@companion-module/base'
 import { MediaFileStore, Player, PlaylistStore, SimpleEntity, TestPatternStore } from '@theatrixx/xpresscue-connect'
 
 export function MediaPicker(player: Player): CompanionInputFieldDropdown {

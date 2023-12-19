@@ -1,16 +1,14 @@
-import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
-import { PlaylistPicker } from '../pickers'
+import { CompanionActionDefinition } from '@companion-module/base'
 import { Action, ActionId } from './_action.types'
 import { Player } from '@theatrixx/xpresscue-connect'
-import { Observable } from 'rxjs'
 
 @ActionId('queue_skip')
 export class QueueSkipAction implements Action {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionAction {
+	get(): CompanionActionDefinition {
 		return {
-			label: 'Skip Queue',
+			name: 'Skip Queue',
 			options: [
 				{
 					id: 'mode',
@@ -23,13 +21,12 @@ export class QueueSkipAction implements Action {
 					],
 				},
 			],
+			callback: (event) => {
+				const opts = event.options
+				const mode = opts.mode as QueueSkipMode
+				this.player.queueSkip(mode === QueueSkipMode.Up ? -1 : 1)
+			},
 		}
-	}
-
-	handle(event: CompanionActionEvent): void {
-		const opts = event.options
-		const mode = opts.mode as QueueSkipMode
-		this.player.queueSkip(mode === QueueSkipMode.Up ? -1 : 1)
 	}
 }
 

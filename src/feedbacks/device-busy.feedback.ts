@@ -1,19 +1,19 @@
 import { DeviceStateStore, Player } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
 import { Colors } from '../constants'
-import { CompanionFeedback } from '../../../../instance_skel_types'
 import { Feedback, FeedbackId } from './_feedback.types'
+import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('device_busy')
 export class DeviceBusyFeedback implements Feedback {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionFeedback {
+	get(): CompanionFeedbackDefinition {
 		return {
-			label: 'Device Busy',
+			name: 'Device Busy',
 			type: 'boolean',
 			description: '',
-			style: {
+			defaultStyle: {
 				color: Colors.BLACK,
 				bgcolor: Colors.YELLOW,
 			},

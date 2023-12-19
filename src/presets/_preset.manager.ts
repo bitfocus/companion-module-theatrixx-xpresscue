@@ -1,10 +1,10 @@
 import { Player, Type } from '@theatrixx/xpresscue-connect'
-import { CompanionPreset } from '../../../../instance_skel_types'
 import { Manager } from '../utils/manager.class'
 import { LoadPlaylistPreset } from './load-playlist.preset'
 import { SetNextMediaTextPreset, SetNextMediaThumbnailPreset } from './set-next-media.preset'
 import { TransportControlsPreset } from './transport-controls.preset'
 import { Preset, PresetWithoutCategory, PRESET_IDKEY } from './_preset.types'
+import { CompanionPresetDefinitions } from '@companion-module/base'
 
 const ALL_PRESETS: Type<Preset>[] = [
 	SetNextMediaTextPreset,
@@ -13,19 +13,31 @@ const ALL_PRESETS: Type<Preset>[] = [
 	TransportControlsPreset,
 ]
 
-export class PresetManager extends Manager<PresetWithoutCategory[], Preset> {
+export class PresetManager extends Manager<Record<string, PresetWithoutCategory>, Preset> {
 	constructor(protected readonly player: Player) {
 		super(player, PRESET_IDKEY)
 		this.initialize(ALL_PRESETS)
 	}
 
-	getFlat(): CompanionPreset[] {
+	getFlat(): CompanionPresetDefinitions {
 		return Object.entries(this.get()).reduce((total, [id, presets]) => {
-			return [...total, ...PresetManager.mapCategory(id, presets)]
-		}, [] as CompanionPreset[])
+			return { ...total, ...PresetManager.mapCategory(id, presets) }
+		}, {} as CompanionPresetDefinitions)
 	}
 
-	private static mapCategory(categoryId: string, input: PresetWithoutCategory[]): CompanionPreset[] {
-		return input.map((p) => ({ ...p, category: categoryId }))
+	private static mapCategory(
+		categoryId: string,
+		presets: Record<string, PresetWithoutCategory>
+	): CompanionPresetDefinitions {
+		const res: CompanionPresetDefinitions = {}
+
+		for (const [id, obj] of Object.entries(presets)) {
+			res[id] = {
+				...obj,
+				category: categoryId,
+			}
+		}
+
+		return res
 	}
 }

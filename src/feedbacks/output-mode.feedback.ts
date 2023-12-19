@@ -1,25 +1,25 @@
 import { Player, SettingsStore } from '@theatrixx/xpresscue-connect'
 import { Colors } from '../constants'
-import { CompanionFeedback, CompanionFeedbackEvent } from '../../../../instance_skel_types'
 import { Feedback, FeedbackId } from './_feedback.types'
 import { Observable } from 'rxjs'
 import { VideoOutputModePicker } from '../pickers'
+import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('output_mode')
 export class OutputModeFeedback implements Feedback {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionFeedback {
+	get(): CompanionFeedbackDefinition {
 		return {
-			label: 'Output Mode',
+			name: 'Output Mode',
 			type: 'boolean',
 			description: '',
-			style: {
+			defaultStyle: {
 				color: Colors.WHITE,
 				bgcolor: Colors.BLUE,
 			},
 			options: [VideoOutputModePicker()],
-			callback: (event: CompanionFeedbackEvent) => {
+			callback: (event) => {
 				const outputMode = this.player.state.get(SettingsStore, 'videoOutputMode')
 				return event.options.videoOutputMode === outputMode
 			},

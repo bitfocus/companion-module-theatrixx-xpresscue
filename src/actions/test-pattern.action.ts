@@ -1,26 +1,25 @@
-import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
 import { Action, ActionId } from './_action.types'
 import { Player, TestPatternStore } from '@theatrixx/xpresscue-connect'
 import { TestPatternPicker } from '../pickers'
 import { Observable } from 'rxjs'
+import { CompanionActionDefinition } from '@companion-module/base'
 
 @ActionId('set_test_pattern')
 export class SetTestPatternAction implements Action {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionAction {
+	get(): CompanionActionDefinition {
 		return {
-			label: 'Set Test Pattern',
+			name: 'Set Test Pattern',
 			options: [TestPatternPicker(this.player)],
+			callback: async (event) => {
+				const testPattern = event.options.patternId as string
+				await this.player.updateSettings('testPattern', testPattern)
+			},
 		}
 	}
 
 	selectRefresh(): Observable<any> {
 		return this.player.state.select(TestPatternStore)
-	}
-
-	handle(event: CompanionActionEvent): void {
-		const testPattern = event.options.patternId as string
-		this.player.updateSettings('testPattern', testPattern)
 	}
 }

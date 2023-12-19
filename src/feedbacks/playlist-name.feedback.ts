@@ -1,25 +1,25 @@
 import { Player, PlaylistStore } from '@theatrixx/xpresscue-connect'
-import { CompanionFeedback } from '../../../../instance_skel_types'
 import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
 import { Observable } from 'rxjs'
 import { PlaylistPicker } from '../pickers'
 import { filterEntitiesChanged } from '../utils/operators'
+import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('playlist_name')
 export class PlaylistNameFeedback implements Feedback {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionFeedback {
+	get(): CompanionFeedbackDefinition {
 		return {
-			label: 'Playlist Name',
+			name: 'Playlist Name',
 			type: 'advanced',
 			description: '',
 			options: [PlaylistPicker(this.player)],
-			callback: (event): any => {
+			callback: (event) => {
 				const playlists = this.player.state.get(PlaylistStore)
 				const playlist = playlists.find((p) => p._id === event.options.playlistId)
 				if (!playlist) {
-					return false
+					return {}
 				}
 				return {
 					text: playlist.name,
@@ -38,7 +38,7 @@ export class PlaylistNameFeedback implements Feedback {
 
 	static build(playlistId: string): FeedbackPreset {
 		return {
-			type: getFeedbackId(this),
+			feedbackId: getFeedbackId(this),
 			options: {
 				playlistId,
 			},

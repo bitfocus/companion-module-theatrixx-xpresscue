@@ -1,5 +1,5 @@
 import { SimpleEntity } from '@theatrixx/xpresscue-connect'
-import { isEqual } from 'lodash'
+import { isEqual } from 'lodash-es'
 import { MonoTypeOperatorFunction, Observable } from 'rxjs'
 import { auditTime, distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators'
 

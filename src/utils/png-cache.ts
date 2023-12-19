@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs'
 import { share } from 'rxjs/operators'
-import Jimp from 'jimp/es'
+import Jimp from 'jimp'
 
 /**
  * Global PNG64 cache for thumbnails and other dynamic images.

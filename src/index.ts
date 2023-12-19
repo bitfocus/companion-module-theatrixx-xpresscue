@@ -1,3 +1,4 @@
+import { runEntrypoint } from '@companion-module/base'
 import { PlayerInstance } from './instance'
 
-export = PlayerInstance
+runEntrypoint(PlayerInstance, [])

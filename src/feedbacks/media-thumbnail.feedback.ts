@@ -1,12 +1,12 @@
 import { MediaFile, MediaFileStore, Player } from '@theatrixx/xpresscue-connect'
-import { CompanionFeedback } from '../../../../instance_skel_types'
 import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
 import { Observable } from 'rxjs'
 import { MediaPicker } from '../pickers'
 import { distinctArrayElements, filterEntitiesChanged } from '../utils/operators'
 import { map, tap } from 'rxjs/operators'
-import { isArray } from 'lodash'
+import { isArray } from 'lodash-es'
 import { updateChache, get, cacheUpdated$ } from '../utils/png-cache'
+import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('media_thumbnail')
 export class MediaThumbnailFeedback implements Feedback {
@@ -14,21 +14,21 @@ export class MediaThumbnailFeedback implements Feedback {
 		this.trackThumbnailChanges().subscribe()
 	}
 
-	get(): CompanionFeedback {
+	get(): CompanionFeedbackDefinition {
 		return {
-			label: 'Media Thumbnail',
+			name: 'Media Thumbnail',
 			type: 'advanced',
 			description: '',
 			options: [MediaPicker(this.player)],
-			callback: (event): any => {
+			callback: (event) => {
 				const medias = this.player.state.get(MediaFileStore)
 				const media = medias.find((m) => m._id === event.options.mediaId)
 				if (!media) {
-					return false
+					return {}
 				}
 				const png64 = get(media._id)
 				if (!png64) {
-					return false
+					return {}
 				}
 				return {
 					png64,
@@ -79,7 +79,7 @@ export class MediaThumbnailFeedback implements Feedback {
 
 	static build(mediaId: string): FeedbackPreset {
 		return {
-			type: getFeedbackId(this),
+			feedbackId: getFeedbackId(this),
 			options: {
 				mediaId,
 			},

@@ -1,6 +1,5 @@
 import { Player, Type } from '@theatrixx/xpresscue-connect'
 import { Feedback, FEEDBACK_IDKEY } from './_feedback.types'
-import { CompanionFeedback } from '../../../../instance_skel_types'
 import { PlayStateFeedback } from './play-state.feedback'
 import { TimeRemainingFeedback } from './time-remaining.feedback'
 import { Manager } from '../utils/manager.class'
@@ -14,6 +13,7 @@ import { DeviceBusyFeedback } from './device-busy.feedback'
 import { merge, Observable, Subject } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { MediaThumbnailFeedback } from './media-thumbnail.feedback'
+import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 const ALL_FEEDBACKS: Type<Feedback>[] = [
 	PlayStateFeedback,
@@ -28,7 +28,7 @@ const ALL_FEEDBACKS: Type<Feedback>[] = [
 	DeviceBusyFeedback,
 ]
 
-export class FeedbackManager extends Manager<CompanionFeedback, Feedback> {
+export class FeedbackManager extends Manager<CompanionFeedbackDefinition, Feedback> {
 	protected _checkFeedback$ = new Subject<string>()
 
 	constructor(protected readonly player: Player) {

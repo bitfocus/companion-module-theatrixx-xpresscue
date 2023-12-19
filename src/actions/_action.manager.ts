@@ -1,5 +1,4 @@
 import { Player, Type } from '@theatrixx/xpresscue-connect'
-import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
 import { Action, ACTION_IDKEY } from './_action.types'
 
 import { LoadPlaylistAction } from './load-playlist.action'
@@ -18,6 +17,7 @@ import { SetVolumeAction } from './set-volume.action'
 import { SetIntensityAction } from './set-intensity.action'
 import { QueueSkipAction } from './queue-skip.action'
 import { QueueClearAction } from './queue-clear.action'
+import { CompanionActionDefinition } from '@companion-module/base'
 
 const ALL_ACTIONS: Type<Action>[] = [
 	PlayStateAction,
@@ -37,16 +37,9 @@ const ALL_ACTIONS: Type<Action>[] = [
 	QueueClearAction,
 ]
 
-export class ActionManager extends Manager<CompanionAction, Action> {
+export class ActionManager extends Manager<CompanionActionDefinition, Action> {
 	constructor(protected readonly player: Player) {
 		super(player, ACTION_IDKEY)
 		this.initialize(ALL_ACTIONS)
-	}
-
-	handle(event: CompanionActionEvent): void {
-		const instance = this.instances.get(event.action)
-		if (instance) {
-			instance.handle(event)
-		}
 	}
 }

@@ -1,15 +1,14 @@
-import InstanceSkel = require('../../../instance_skel')
-import { SomeCompanionConfigField } from '../../../instance_skel_types'
+import { Regex, SomeCompanionConfigField } from '@companion-module/base'
 
 export interface PlayerConfig {
 	host: string
 	port: number
 }
 
-export function ConfigFieldsFactory(instance: InstanceSkel<PlayerConfig>): SomeCompanionConfigField[] {
+export function ConfigFieldsFactory(): SomeCompanionConfigField[] {
 	return [
 		{
-			type: 'text',
+			type: 'static-text',
 			id: 'info',
 			width: 12,
 			label: 'Information',
@@ -20,7 +19,7 @@ export function ConfigFieldsFactory(instance: InstanceSkel<PlayerConfig>): SomeC
 			id: 'host',
 			type: 'textinput',
 			label: 'Host IP Address',
-			regex: instance.REGEX_IP,
+			regex: Regex.IP,
 			width: 6,
 			required: true,
 		},

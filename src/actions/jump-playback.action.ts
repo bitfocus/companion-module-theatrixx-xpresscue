@@ -1,4 +1,4 @@
-import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
+import { CompanionActionDefinition } from '@companion-module/base'
 import { TimePicker } from '../pickers'
 import { Action, ActionId } from './_action.types'
 import { Player } from '@theatrixx/xpresscue-connect'
@@ -7,9 +7,9 @@ import { Player } from '@theatrixx/xpresscue-connect'
 export class JumpPlaybackAction implements Action {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionAction {
+	get(): CompanionActionDefinition {
 		return {
-			label: 'Jump Playback',
+			name: 'Jump Playback',
 			options: [
 				TimePicker(),
 				{
@@ -24,13 +24,12 @@ export class JumpPlaybackAction implements Action {
 					],
 				},
 			],
+			callback: async (event) => {
+				const opts = event.options
+				const time = Number(opts.time) * 1000
+				this.player.jump(time, opts.mode as JumpPlaybackMode)
+			},
 		}
-	}
-
-	handle(event: CompanionActionEvent): void {
-		const opts = event.options
-		const time = Number(opts.time) * 1000
-		this.player.jump(time, opts.mode as JumpPlaybackMode)
 	}
 }
 

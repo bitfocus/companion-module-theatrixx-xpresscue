@@ -1,25 +1,25 @@
 import { Colors } from '../constants'
-import { CompanionFeedback, CompanionFeedbackEvent } from '../../../../instance_skel_types'
 import { Feedback, FeedbackId } from './_feedback.types'
 import { Player, DeviceStateStore } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
 import { TimePicker } from '../pickers'
+import { CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('time_remaining')
 export class TimeRemainingFeedback implements Feedback {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionFeedback {
+	get(): CompanionFeedbackDefinition {
 		return {
-			label: 'Time Remaining',
+			name: 'Time Remaining',
 			type: 'boolean',
 			description: '',
-			style: {
+			defaultStyle: {
 				color: Colors.WHITE,
 				bgcolor: Colors.RED,
 			},
 			options: [TimePicker()],
-			callback: (event: CompanionFeedbackEvent) => {
+			callback: (event) => {
 				const { remaining } = this.player.state.get(DeviceStateStore, 'progress')
 				return remaining <= (event.options.time as number) * 1000 && remaining !== 0
 			},

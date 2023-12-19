@@ -1,4 +1,4 @@
-import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
+import { CompanionActionDefinition } from '@companion-module/base'
 import { Action, ActionId, ActionPreset, getActionId } from './_action.types'
 import { Player } from '@theatrixx/xpresscue-connect'
 
@@ -6,9 +6,9 @@ import { Player } from '@theatrixx/xpresscue-connect'
 export class PlayStateAction implements Action {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionAction {
+	get(): CompanionActionDefinition {
 		return {
-			label: 'Set Play State',
+			name: 'Set Play State',
 			options: [
 				{
 					id: 'state',
@@ -23,32 +23,31 @@ export class PlayStateAction implements Action {
 					],
 				},
 			],
-		}
-	}
-
-	handle(event: CompanionActionEvent): void {
-		const player = this.player
-		switch (event.options.state as PlayStateCommand) {
-			case PlayStateCommand.TogglePlayPause:
-				player.togglePlayPause()
-				break
-			case PlayStateCommand.Play:
-				player.play()
-				break
-			case PlayStateCommand.Pause:
-				player.pause()
-				break
-			case PlayStateCommand.Stop:
-				player.stop()
-				break
-			default:
-				break
+			callback: (event) => {
+				const player = this.player
+				switch (event.options.state as PlayStateCommand) {
+					case PlayStateCommand.TogglePlayPause:
+						player.togglePlayPause()
+						break
+					case PlayStateCommand.Play:
+						player.play()
+						break
+					case PlayStateCommand.Pause:
+						player.pause()
+						break
+					case PlayStateCommand.Stop:
+						player.stop()
+						break
+					default:
+						break
+				}
+			},
 		}
 	}
 
 	static build(state: PlayStateCommand): ActionPreset {
 		return {
-			action: getActionId(this),
+			actionId: getActionId(this),
 			options: {
 				state,
 			},

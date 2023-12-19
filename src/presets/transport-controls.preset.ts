@@ -7,27 +7,32 @@ import { PlayModeFeedback } from '../feedbacks/play-mode.feedback'
 
 @PresetCategory('Transport Controls')
 export class TransportControlsPreset implements Preset {
-	get(): PresetWithoutCategory[] {
-		return [
-			TransportControlsPreset.buildTogglePlayPause(),
-			TransportControlsPreset.buildTake(),
-			TransportControlsPreset.buildStop(),
-			TransportControlsPreset.buildPause(),
-			TransportControlsPreset.buildPlay(),
-		]
+	get(): Record<string, PresetWithoutCategory> {
+		return {
+			transport_toggleplaypause: TransportControlsPreset.buildTogglePlayPause(),
+			transport_take: TransportControlsPreset.buildTake(),
+			transport_stop: TransportControlsPreset.buildStop(),
+			transport_pause: TransportControlsPreset.buildPause(),
+			transport_play: TransportControlsPreset.buildPlay(),
+		}
 	}
 
 	static buildTogglePlayPause(): PresetWithoutCategory {
 		return {
-			label: 'Toggle Play Pause',
-			bank: {
-				style: 'png',
+			name: 'Toggle Play Pause',
+			type: 'button',
+			style: {
 				text: 'Toggle Play / Pause',
 				size: 'auto',
 				color: Colors.WHITE,
 				bgcolor: Colors.BLACK,
 			},
-			actions: [PlayStateAction.build(PlayStateCommand.TogglePlayPause)],
+			steps: [
+				{
+					down: [PlayStateAction.build(PlayStateCommand.TogglePlayPause)],
+					up: [],
+				},
+			],
 			feedbacks: [
 				PlayStateFeedback.build(PlayState.Playing, { png64: CompanionIcons.ICON_PAUSE_ACTIVE, text: '' }),
 				PlayStateFeedback.build(PlayState.Paused, { png64: CompanionIcons.ICON_PLAY_ACTIVE, text: '' }),
@@ -37,63 +42,83 @@ export class TransportControlsPreset implements Preset {
 
 	static buildTake(): PresetWithoutCategory {
 		return {
-			label: 'Take',
-			bank: {
-				style: 'text',
+			name: 'Take',
+			type: 'button',
+			style: {
 				text: 'TAKE',
 				size: 'auto',
 				color: Colors.WHITE,
 				bgcolor: Colors.RED,
 			},
-			actions: [TakeAction.build()],
+			steps: [
+				{
+					down: [TakeAction.build()],
+					up: [],
+				},
+			],
 			feedbacks: [PlayModeFeedback.build('direct', { bgcolor: Colors.BLACK, color: Colors.GREY })],
 		}
 	}
 
 	static buildStop(): PresetWithoutCategory {
 		return {
-			label: 'Stop',
-			bank: {
-				style: 'png',
+			name: 'Stop',
+			type: 'button',
+			style: {
 				text: '',
 				size: 'auto',
 				color: Colors.WHITE,
 				bgcolor: Colors.BLACK,
 				png64: CompanionIcons.ICON_STOP_INACTIVE,
 			},
-			actions: [PlayStateAction.build(PlayStateCommand.Stop)],
+			steps: [
+				{
+					down: [PlayStateAction.build(PlayStateCommand.Stop)],
+					up: [],
+				},
+			],
 			feedbacks: [],
 		}
 	}
 
 	static buildPause(): PresetWithoutCategory {
 		return {
-			label: 'Pause',
-			bank: {
-				style: 'png',
+			name: 'Pause',
+			type: 'button',
+			style: {
 				text: '',
 				size: 'auto',
 				color: Colors.WHITE,
 				bgcolor: Colors.BLACK,
 				png64: CompanionIcons.ICON_PAUSE_INACTIVE,
 			},
-			actions: [PlayStateAction.build(PlayStateCommand.Pause)],
+			steps: [
+				{
+					down: [PlayStateAction.build(PlayStateCommand.Pause)],
+					up: [],
+				},
+			],
 			feedbacks: [],
 		}
 	}
 
 	static buildPlay(): PresetWithoutCategory {
 		return {
-			label: 'Play',
-			bank: {
-				style: 'png',
+			name: 'Play',
+			type: 'button',
+			style: {
 				text: '',
 				size: 'auto',
 				color: Colors.WHITE,
 				bgcolor: Colors.BLACK,
 				png64: CompanionIcons.ICON_PLAY_INACTIVE,
 			},
-			actions: [PlayStateAction.build(PlayStateCommand.Play)],
+			steps: [
+				{
+					down: [PlayStateAction.build(PlayStateCommand.Play)],
+					up: [],
+				},
+			],
 			feedbacks: [],
 		}
 	}

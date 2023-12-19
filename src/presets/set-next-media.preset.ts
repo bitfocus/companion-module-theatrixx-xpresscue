@@ -1,7 +1,6 @@
 import { MediaFile, MediaFileStore, Player } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
 import { MediaNameFeedback } from '../feedbacks/media-name.feedback'
-import { CompanionBankPreset } from '../../../../instance_skel_types'
 import { SetNextMediaAction } from '../actions/set-next-media.action'
 import { Colors } from '../constants'
 import { Preset, PresetCategory, PresetWithoutCategory } from './_preset.types'
@@ -9,13 +8,14 @@ import { MediaStateFeedback, MediaStateMode } from '../feedbacks/media-state.fee
 import { MediaThumbnailFeedback } from '../feedbacks/media-thumbnail.feedback'
 import { filterEntitiesChanged } from '../utils/operators'
 import { cacheUpdated$, get } from '../utils/png-cache'
+import { CompanionButtonStyleProps } from '@companion-module/base'
 
 abstract class SetNextMediaPreset implements Preset {
 	constructor(protected readonly player: Player, private withThumbails = false) {}
 
-	get(): PresetWithoutCategory[] {
+	get(): Record<string, PresetWithoutCategory> {
 		const items = this.player.state.get(MediaFileStore)
-		return items.map((m) => this.createFromMedia(m))
+		return Object.fromEntries(items.map((m) => [`set_next_media_${m._id}`, this.createFromMedia(m)]))
 	}
 
 	selectRefresh(): Observable<any> {
@@ -36,14 +36,20 @@ abstract class SetNextMediaPreset implements Preset {
 		}
 
 		return {
-			label: item._id,
-			bank: this.createBank(item),
-			actions: [SetNextMediaAction.build(item._id)],
+			name: item._id,
+			type: 'button',
+			style: this.createBank(item),
+			steps: [
+				{
+					down: [SetNextMediaAction.build(item._id)],
+					up: [],
+				},
+			],
 			feedbacks,
 		}
 	}
 
-	protected abstract createBank(item: MediaFile): CompanionBankPreset
+	protected abstract createBank(item: MediaFile): CompanionButtonStyleProps
 }
 
 @PresetCategory('Set Next Media (Text)')
@@ -52,9 +58,8 @@ export class SetNextMediaTextPreset extends SetNextMediaPreset {
 		super(player, false)
 	}
 
-	protected createBank(item: MediaFile): CompanionBankPreset {
+	protected createBank(item: MediaFile): CompanionButtonStyleProps {
 		return {
-			style: 'text',
 			text: item.name,
 			size: 'auto',
 			color: Colors.WHITE,
@@ -73,9 +78,8 @@ export class SetNextMediaThumbnailPreset extends SetNextMediaPreset {
 		return cacheUpdated$
 	}
 
-	protected createBank(item: MediaFile): CompanionBankPreset {
+	protected createBank(item: MediaFile): CompanionButtonStyleProps {
 		return {
-			style: 'png',
 			text: '',
 			png64: get(item._id),
 			size: 'auto',

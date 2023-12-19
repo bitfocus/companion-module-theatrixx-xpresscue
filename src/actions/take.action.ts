@@ -1,4 +1,4 @@
-import { CompanionAction, CompanionActionEvent } from '../../../../instance_skel_types'
+import { CompanionActionDefinition } from '@companion-module/base'
 import { Action, ActionId, ActionPreset, getActionId } from './_action.types'
 import { Player } from '@theatrixx/xpresscue-connect'
 
@@ -6,9 +6,9 @@ import { Player } from '@theatrixx/xpresscue-connect'
 export class TakeAction implements Action {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionAction {
+	get(): CompanionActionDefinition {
 		return {
-			label: 'Take',
+			name: 'Take',
 			options: [
 				{
 					id: 'without_play',
@@ -17,16 +17,15 @@ export class TakeAction implements Action {
 					default: false,
 				},
 			],
+			callback: (event) => {
+				this.player.take(event.options.without_play as boolean)
+			},
 		}
-	}
-
-	handle(event: CompanionActionEvent): void {
-		this.player.take(event.options.without_play as boolean)
 	}
 
 	static build(without_play = false): ActionPreset {
 		return {
-			action: getActionId(this),
+			actionId: getActionId(this),
 			options: {
 				without_play,
 			},

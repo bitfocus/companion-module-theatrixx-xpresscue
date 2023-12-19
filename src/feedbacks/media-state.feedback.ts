@@ -1,21 +1,21 @@
 import { DeviceStateStore, MediaFileStore, Player } from '@theatrixx/xpresscue-connect'
-import { CompanionFeedback, CompanionFeedbackBoolean, CompanionFeedbackEvent } from '../../../../instance_skel_types'
 import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
 import { combineLatest, Observable } from 'rxjs'
 import { MediaPicker } from '../pickers'
 import { Colors } from '../constants'
 import { filterEntitiesChanged } from '../utils/operators'
+import { CompanionFeedbackButtonStyleResult, CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('media_state')
 export class MediaStateFeedback implements Feedback {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionFeedback {
+	get(): CompanionFeedbackDefinition {
 		return {
-			label: 'Media State',
+			name: 'Media State',
 			type: 'boolean',
 			description: '',
-			style: {
+			defaultStyle: {
 				color: Colors.BLACK,
 				bgcolor: Colors.RED,
 			},
@@ -32,7 +32,7 @@ export class MediaStateFeedback implements Feedback {
 					],
 				},
 			],
-			callback: (event: CompanionFeedbackEvent) => {
+			callback: (event) => {
 				const mediaId = event.options.mediaId as string
 				const mode = event.options.mode as MediaStateMode
 				const queueItem = this.player.state.get(DeviceStateStore, mode)
@@ -57,9 +57,9 @@ export class MediaStateFeedback implements Feedback {
 		])
 	}
 
-	static build(mediaId: string, mode: MediaStateMode, style?: CompanionFeedbackBoolean['style']): FeedbackPreset {
+	static build(mediaId: string, mode: MediaStateMode, style?: CompanionFeedbackButtonStyleResult): FeedbackPreset {
 		return {
-			type: getFeedbackId(this),
+			feedbackId: getFeedbackId(this),
 			options: {
 				mediaId,
 				mode,

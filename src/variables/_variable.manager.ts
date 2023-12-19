@@ -1,5 +1,5 @@
 import { Player, Type } from '@theatrixx/xpresscue-connect'
-import { CompanionVariable } from '../../../../instance_skel_types'
+import { CompanionVariableDefinition } from '@companion-module/base'
 import { Manager } from '../utils/manager.class'
 
 import { merge, Observable, Subject } from 'rxjs'
@@ -27,10 +27,10 @@ export class VariableManager extends Manager<string, Variable> {
 		this.initialize(ALL_VARIABLES)
 	}
 
-	getFlat(): CompanionVariable[] {
-		return Object.entries(this.get()).reduce((total, [name, label]) => {
-			return [...total, { name, label }]
-		}, [] as CompanionVariable[])
+	getFlat(): CompanionVariableDefinition[] {
+		return Object.entries(this.get()).reduce((total, [variableId, name]) => {
+			return [...total, { name, variableId }]
+		}, [] as CompanionVariableDefinition[])
 	}
 
 	get update$(): Observable<[string, string]> {

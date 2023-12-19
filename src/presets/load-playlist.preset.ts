@@ -1,19 +1,19 @@
 import { Player, Playlist, PlaylistStore } from '@theatrixx/xpresscue-connect'
 import { Observable } from 'rxjs'
-import { CompanionBankPreset } from '../../../../instance_skel_types'
 import { Colors } from '../constants'
 import { Preset, PresetCategory, PresetWithoutCategory } from './_preset.types'
 import { PlaylistNameFeedback } from '../feedbacks/playlist-name.feedback'
 import { LoadPlaylistAction } from '../actions/load-playlist.action'
 import { filterEntitiesChanged } from '../utils/operators'
+import { CompanionButtonStyleProps } from '@companion-module/base'
 
 @PresetCategory('Load Playlist')
 export class LoadPlaylistPreset implements Preset {
 	constructor(private readonly player: Player) {}
 
-	get(): PresetWithoutCategory[] {
+	get(): Record<string, PresetWithoutCategory> {
 		const items = this.player.state.get(PlaylistStore)
-		return items.map((p) => LoadPlaylistPreset.createFromPlaylist(p))
+		return Object.fromEntries(items.map((p) => [`load_playlist_${p._id}`, LoadPlaylistPreset.createFromPlaylist(p)]))
 	}
 
 	selectRefresh(): Observable<any> {
@@ -22,16 +22,21 @@ export class LoadPlaylistPreset implements Preset {
 
 	private static createFromPlaylist(item: Playlist): PresetWithoutCategory {
 		return {
-			label: item._id,
-			bank: this.createBank(item),
-			actions: [LoadPlaylistAction.build(item._id)],
+			name: item._id,
+			type: 'button',
+			style: this.createBank(item),
+			steps: [
+				{
+					down: [LoadPlaylistAction.build(item._id)],
+					up: [],
+				},
+			],
 			feedbacks: [PlaylistNameFeedback.build(item._id)],
 		}
 	}
 
-	private static createBank(item: Playlist): CompanionBankPreset {
+	private static createBank(item: Playlist): CompanionButtonStyleProps {
 		return {
-			style: 'text',
 			text: item.name,
 			size: 'auto',
 			color: Colors.WHITE,

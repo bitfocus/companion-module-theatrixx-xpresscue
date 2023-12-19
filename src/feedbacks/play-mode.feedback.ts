@@ -1,25 +1,25 @@
 import { Player, Settings, SettingsStore } from '@theatrixx/xpresscue-connect'
 import { Colors } from '../constants'
-import { CompanionFeedback, CompanionFeedbackBoolean, CompanionFeedbackEvent } from '../../../../instance_skel_types'
 import { Feedback, FeedbackId, FeedbackPreset, getFeedbackId } from './_feedback.types'
 import { Observable } from 'rxjs'
 import { PlayModePicker } from '../pickers'
+import { CompanionFeedbackButtonStyleResult, CompanionFeedbackDefinition } from '@companion-module/base'
 
 @FeedbackId('play_mode')
 export class PlayModeFeedback implements Feedback {
 	constructor(private readonly player: Player) {}
 
-	get(): CompanionFeedback {
+	get(): CompanionFeedbackDefinition {
 		return {
-			label: 'Play Mode',
+			name: 'Play Mode',
 			type: 'boolean',
 			description: '',
-			style: {
+			defaultStyle: {
 				color: Colors.WHITE,
 				bgcolor: Colors.BLUE,
 			},
 			options: [PlayModePicker()],
-			callback: (event: CompanionFeedbackEvent) => {
+			callback: (event) => {
 				const playMode = this.player.state.get(SettingsStore, 'playMode')
 				return event.options.playMode === playMode
 			},
@@ -30,9 +30,9 @@ export class PlayModeFeedback implements Feedback {
 		return this.player.state.select(SettingsStore, 'playMode')
 	}
 
-	static build(playMode: Settings['playMode'], style?: CompanionFeedbackBoolean['style']): FeedbackPreset {
+	static build(playMode: Settings['playMode'], style?: CompanionFeedbackButtonStyleResult): FeedbackPreset {
 		return {
-			type: getFeedbackId(this),
+			feedbackId: getFeedbackId(this),
 			options: {
 				playMode,
 			},
