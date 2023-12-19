@@ -1,31 +1,11 @@
 {
   "name": "theatrixx-xpresscue",
   "version": "1.2.1",
-  "api_version": "1.0.0",
-  "keywords": [
-    "Player",
-    "Playback",
-    "MediaPlayer",
-    "Media Player",
-    "xPressCue",
-    "Theatrixx"
-  ],
-  "manufacturer": "Theatrixx",
-  "product": "xPressCue",
-  "shortname": "xPressCue",
-  "description": "Official Theatrixx xPressCue module for Bitfocus Companion",
   "main": "dist/index.js",
-  "files": [
-    "dist/**/*"
-  ],
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
     "build:watch": "tsc -p tsconfig.json --watch",
     "dev": "yarn build:watch"
-  },
-  "author": "Gabriel Duschinsky <gduschinsky@theatrixx.com>",
-  "bugs": {
-    "url": "https://github.com/bitfocus/companion-module-theatrixx-xpresscue/issues"
   },
   "license": "MIT",
   "dependencies": {
