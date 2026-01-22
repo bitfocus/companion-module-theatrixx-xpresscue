@@ -13,7 +13,7 @@
     "@companion-module/base": "~1.6.0",
     "@theatrixx/xpresscue-connect": "1.3.0",
     "jimp": "^0.22.10",
-    "lodash-es": "^4.17.21",
+    "lodash-es": "^4.17.23",
     "rxjs": "6"
   },
   "devDependencies": {
